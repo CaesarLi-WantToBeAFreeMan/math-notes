@@ -1,0 +1,6 @@
+# obsidian folder
+.obsidian/
+
+# ai agents
+.codex/
+.claude/
