@@ -1,6 +1,13 @@
 # obsidian folder
 .obsidian/
 
+# libreoffice/openoffice/onlyoffice lock files
+.~lock.*#
+
+# microsoft office temporary/lock files
+~$*
+*.tmp
+
 # ai agents
 .codex/
 .claude/
