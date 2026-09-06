@@ -1,6 +1,9 @@
 # obsidian folder
 .obsidian/
 
+# tikz svg cache
+.tikz-cache
+
 # libreoffice/openoffice/onlyoffice lock files
 .~lock.*#
 
@@ -9,5 +12,5 @@
 *.tmp
 
 # ai agents
-.codex/
+.agent/
 .claude/
