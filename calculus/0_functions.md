@@ -141,69 +141,46 @@ title: 0 Functions
 
 ```tikz
 \begin{tikzpicture}
-    % Colors
-    \definecolor{neon-pink}{HTML}{FF6EC7}
-    \definecolor{neon-fuchsia}{HTML}{FE4164}
-    \definecolor{neon-red}{HTML}{FF3131}
-    \definecolor{neon-orange}{HTML}{FF5F1F}
-    \definecolor{neon-yellow}{HTML}{FFFF33}
-    \definecolor{electric-lime}{HTML}{CCFF00}
-    \definecolor{neon-green}{HTML}{39FF14}
-    \definecolor{neon-turquoise}{HTML}{0FF0FC}
-    \definecolor{neon-blue}{HTML}{1F51FF}
-    \definecolor{electric-blue}{HTML}{7DF9FF}
-    \definecolor{neon-purple}{HTML}{B026FF}
-    \definecolor{neon-violet}{HTML}{9D00FF}
-    \definecolor{neon-magenta}{HTML}{FF00FF}
-    \definecolor{laser-lemon}{HTML}{FFFF66}
-    \definecolor{bright-aqua}{HTML}{00FFEF}
-    \definecolor{hot-pink}{HTML}{FF6984}
+    %title
+    \node [above, color=neon-purple, scale=1.2]
+        at (0,2)
+        {Coordinate System};
 
     %coordinate line
-    \draw [->, line width=1.2pt, color=neon-pink]
-        (-3.5,0) -- (3.5,0)
-        node [right, color=neon-blue, scale=1.5]
-            {coordinate line};
+    \draw [cpaxes]
+        (-3.2,0) -- (3.2,0)
+        node [right, cptext]
+        {coordinate line};
 
     %origin
     \fill [neon-orange]
         (0,0)
         circle
         (2.5pt);
-
     \draw [->, line width=1.5pt, color=neon-orange]
         (0,0) -- (0,1)
-        node [above, scale=1.5, color=neon-orange]
-            {origin};
-
-    %coordinates
-    \foreach \x in {-3,-2,-1,1,2,3} {
-        \fill [bright-aqua]
-            (\x,0)
-            circle
-            (2pt);
-
-        \node [below, color=bright-aqua]
-            at (\x,0)
-            {$\x$};
-
-        \draw [->, line width=1.2pt, color=bright-aqua]
-            (\x,0) -- (0,-2);
-    };
-    \node [below, scale=1.5, color=bright-aqua]
-        at (0,-2)
-        {coordinates};
-
-    %zero
-    \node [below left, color=neon-orange, scale=1.5]
+        node [above]
+        {origin};
+    \node [below left, color=neon-orange]
         at (0,0)
         {$0$};
 
-    %coordinate system
-    \node [above, color=neon-purple, scale=1.5]
-        at (0,2)
-        {coordinate system};
+    %coordinates
+    \foreach \x in {-3,-2,-1,1,2,3} {
+        \node [cppoint]
+            at (\x,0)
+            {};
+        \node [below, cptext]
+            at (\x,0)
+            {$\x$};
+        \draw [cpaux]
+            (\x,0) -- (0,-2);
+    }
 
+    %coordinates label
+    \node [below, cptext]
+        at (0,-2)
+        {coordinates};
 \end{tikzpicture}
 ```
 
@@ -536,79 +513,60 @@ $$
 - 平面上任一點$P$，對`x,y-軸`的**垂足**之座標分別為$a$及$b$，則$(a,b)$為$P$的座標,
 
 ```tikz
-\usepackage {xcolor}
+\begin{tikzpicture}
+    %axes
+    \draw [cpaxes]
+        (-3.2,0) -- (3.2,0);
+    \node [right, cptext, scale=1.5]
+        at (3.2,0)
+        {$x$};
 
-\begin {document}
-    \begin {tikzpicture}
-        %colors
-        \definecolor {neon-pink} {HTML} {FF6EC7}
-        \definecolor {neon-fuchsia} {HTML} {FE4164}
-        \definecolor {neon-red} {HTML} {FF3131}
-        \definecolor {neon-orange} {HTML} {FF5F1F}
-        \definecolor {neon-yellow} {HTML} {FFFF33}
-        \definecolor {electric-lime} {HTML} {CCFF00}
-        \definecolor {neon-green} {HTML} {39FF14}
-        \definecolor {neon-turquoise} {HTML} {0FF0FC}
-        \definecolor {neon-blue} {HTML} {1F51FF}
-        \definecolor {electric-blue} {HTML} {7DF9FF}
-        \definecolor {neon-purple} {HTML} {B026FF}
-        \definecolor {neon-violet} {HTML} {9D00FF}
-        \definecolor {neon-magenta} {HTML} {FF00FF}
-        \definecolor {laser-lemon} {HTML} {FFFF66}
-        \definecolor {bright-aqua} {HTML} {00FFEF}
-        \definecolor {hot-pink} {HTML} {FF6984}
+    \draw [cpaxes]
+        (0,-3.2) -- (0,3.2);
+    \node [above, cptext, scale=1.5]
+        at (0,3.2)
+        {$y$};
 
-        %axes
-        \draw [->, line width=1.2pt, color=neon-pink]
-            (-3.2,0) -- (3.2,0)
-            node [right, color=bright-aqua, scale=1.5]
-            {$x$};
-        \draw [->, line width=1.2pt, color=neon-pink]
-            (0,-3.2) -- (0,3.2)
-            node [above, color=bright-aqua, scale=1.5]
-            {$y$};
-        \node [below left, color=bright-aqua, scale=1.5]
-            at (0,0)
-            {$0$};
+    \node [below left, cptext, scale=1.5]
+        at (0,0)
+        {$0$};
 
-        %coordinates
-        \foreach \x in {-3,-2,-1,1,2,3} {
-            \fill [bright-aqua]
-                (\x,0)
-                circle
-                (2pt);
-
-            \node [below, color=bright-aqua]
-                at (\x,0)
-                {$\x$};
-        };
-
-        \foreach \y in {-3,-2,-1,1,2,3} {
-            \fill [bright-aqua]
-                (0,\y)
-                circle
-                (2pt);
-
-            \node [left, color=bright-aqua]
-                at (0,\y)
-                {$\y$};
-        };
-
-        %point
+    %x axis coordinates
+    \foreach \x in {-3,-2,-1,1,2,3} {
         \fill [bright-aqua]
-            (1,1)
+            (\x,0)
             circle
-            (3pt);
-        \node [above right, scale=1.5, color=bright-aqua]
-            at (1,1)
-            {$(1,1)$};
-        \draw [dashed, line width=1.5pt, color=neon-blue]
-            (1,0) -- (1,1);
-        \draw [dashed, line width=1.5pt, color=neon-blue]
-            (0,1) -- (1,1);
+            (2pt);
+        \node [below, cptext]
+            at (\x,0)
+            {$\x$};
+    }
 
-    \end {tikzpicture}
-\end {document}
+    %y-axis coordinates
+    \foreach \y in {-3,-2,-1,1,2,3} {
+        \fill [bright-aqua]
+            (0,\y)
+            circle
+            (2pt);
+        \node [left, cptext]
+            at (0,\y)
+            {$\y$};
+    }
+
+    %point & auxiliary lines
+    \fill [bright-aqua]
+        (1,1)
+        circle
+        (3pt);
+    \node [above right, cptext, scale=1.5]
+        at (1,1)
+        {$(1,1)$};
+
+    \draw [cpaux]
+        (1,0) -- (1,1);
+    \draw [cpaux]
+        (0,1) -- (1,1);
+\end{tikzpicture}
 ```
 
 
@@ -619,74 +577,42 @@ $$
    > [!note] my answer
    >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.5)}, anchor=west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %ticks
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \addplot [cparea]
+   >            coordinates {(-3.2,-2) (3.2,-2) (3.2,1) (-3.2,1)};
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        %boundaries
+   >        \addplot [cpaux, domain=-3.2:3.2] {-2};
+   >        \addplot [cpaux, domain=-3.2:3.2] {1};
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-3.2,0) -- (3.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-3.2) -- (0,3.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
-   >
-   >       %coordinates
-   >       \foreach \x in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           (-3.2,-2) -- (3.2,-2) -- (3.2,1) -- (-3.2,1) -- cycle;
-   >
-   >       %lines
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           (-3.2,-2) -- (3.2,-2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-3.2,1) -- (3.2,1);
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes tick points
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!check] correct
@@ -696,78 +622,43 @@ $$
    > [!note] my answer
    >
    > ```tikz
-   > \usepackage {xcolor}
+   >\begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-5.2, xmax=5.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.5)}, anchor=west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-5,-4,-3,-2,-1,1,2,3,4,5}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \addplot [cparea] coordinates {(-4,-2) (4,-2) (4,2) (-4,2)};
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        %boundaries
+   >        \addplot [cpaux, domain=-4:4] {2};
+   >        \addplot [cpaux, domain=-4:4] {-2};
+   >        \draw [cpaux] (axis cs:-4,-2) -- (axis cs:-4,2);
+   >        \draw [cpaux] (axis cs:4,-2) -- (axis cs:4,2);
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-5.2,0) -- (5.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-3.2) -- (0,3.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
-   >
-   >       %coordinates
-   >       \foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           (-4,-2) -- (4,-2) -- (4,2) -- (-4,2) -- cycle;
-   >
-   >       %lines
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,2) -- (4,2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,-2) -- (4,-2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,2) -- (-4,-2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (4,2) -- (4,-2);
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-5,0) (-4,0) (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0) (4,0) (5,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!check] correct
@@ -777,72 +668,43 @@ $$
    > [!note] my answer
    >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-2.2, xmax=2.2, ymin=-1.2, ymax=4.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.21)}, anchor=west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-2,-1,1,2}, ytick={-1,1,2,3,4},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \addplot [cparea, domain=-2.2:2.2, samples=100]
+   >            {(\x)^2-1}
+   >            |- (axis cs:2.2,4) -| (axis cs:-2.2,4) --cycle;
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        %parabola
+   >        \addplot [cpgraph, domain=-2.2:2.2, samples=100]
+   >            {(\x)^2-1};
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-2.2,0) -- (2.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-1.2) -- (0,5.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
-   >
-   >       %coordinates
-   >       \foreach \x in {-2,-1,1,2} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-1,1,2,3,4,5} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           (-2.5,5.25) -- plot [domain=-2.5:2.5, samples=100] (\x,{(\x)^2-1}) -- (2.5,5.25) --cycle;
-   >
-   >       %lines
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           plot [domain=-2.5:2.5, samples=100] (\x,{(\x)^2-1});
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-2,0) (-1,0) (1,0) (2,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-1) (0,1) (0,2) (0,3) (0,4)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!check] correct
@@ -850,288 +712,120 @@ $$
 4. 作圖 $\{(x,y)|-x\le y<\frac{1}{2}(x+3)\}$
 
    > [!note] my answer
-   >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \fill [cparea]
+   >            (axis cs:-1,1)
+   >            -- plot [domain=-1:3.2] (axis cs:\x, {0.5*\x + 1.5})
+   >            -- (axis cs:3.2, -3.2)
+   >            -- plot [domain=3.2:-1] (axis cs:\x, {-\x})
+   >            -- cycle;
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        %graphs
+   >        \addplot [cpgraph, domain=-3.2:3.2]
+   >            {0.5*\x + 1.5}
+   >            node [above right, cpfunc] {$y=\frac{1}{2}x+\frac{3}{2}$};
+   >        \addplot [cpgraph, domain=-3.2:3.2]
+   >            {-\x}
+   >            node [below right, cpfunc] {$y=-x$};
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-4.2,0) -- (4.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-4.2) -- (0,4.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
+   >        %points
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-1,1) (0,1.5)
+   >        };
+   >        \node [cptext, above left] at (axis cs:-3,0) {$(-3,0)$};
+   >        \node [cptext, above left] at (axis cs:-1,1) {$(-1,1)$};
+   >        \node [cptext, above right] at (axis cs:0,1.5) {$(0,1.5)$};
    >
-   >       %coordinates
-   >       \foreach \x in {-4,-3,-2,-1,1,2,3,4} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-4,-3,-2,-1,1,2,3,4} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %graoh
-   >       \draw [line width=1.2pt, color=neon-green]
-   >           plot [domain=-4:4, samples=100]
-   >           (\x,{-(\x)});
-   >       \draw [line width=1.2pt, color=neon-green]
-   >           plot [domain=-4:4, samples=100, smooth]
-   >           (\x,{0.5*(\x)+1.5});
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{-(\x)})
-   >           --
-   >           plot [domain=4:-1, samples=100, smooth]
-   >           (\x,{0.5*(\x)+1.5})
-   >           -- cycle;
-   >
-   >       %lines
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{-(\x)});
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{0.5*(\x)+1.5});
-   >
-   >       %points
-   >       \fill [bright-aqua]
-   >           (-1,1)
-   >           circle
-   >           (3pt);
-   >       \node [above, color=bright-aqua, scale=1.5]
-   >           at (-1,1)
-   >           {$(-1,1)$};
-   >
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
-   ```tikz
-   \usepackage{xcolor}
-
-   \begin{document}
-   \begin{tikzpicture}
-       %colors
-       \definecolor{neon-pink}{HTML}{FF6EC7}
-       \definecolor{neon-fuchsia}{HTML}{FE4164}
-       \definecolor{neon-red}{HTML}{FF3131}
-       \definecolor{neon-orange}{HTML}{FF5F1F}
-       \definecolor{neon-yellow}{HTML}{FFFF33}
-       \definecolor{electric-lime}{HTML}{CCFF00}
-       \definecolor{neon-green}{HTML}{39FF14}
-       \definecolor{neon-turquoise}{HTML}{0FF0FC}
-       \definecolor{neon-blue}{HTML}{1F51FF}
-       \definecolor{electric-blue}{HTML}{7DF9FF}
-       \definecolor{neon-purple}{HTML}{B026FF}
-       \definecolor{neon-violet}{HTML}{9D00FF}
-       \definecolor{neon-magenta}{HTML}{FF00FF}
-       \definecolor{laser-lemon}{HTML}{FFFF66}
-       \definecolor{bright-aqua}{HTML}{00FFEF}
-       \definecolor{hot-pink}{HTML}{FF6984}
-
-       %axes
-       \draw[->, line width=1.2pt, color=bright-aqua]
-           (-4.2,0) -- (4.2,0)
-           node[right, color=bright-aqua, scale=1.5]
-               {$x$};
-       \draw[->, line width=1.2pt, color=bright-aqua]
-           (0,-4.2) -- (0,4.2)
-           node[above, color=bright-aqua, scale=1.5]
-               {$y$};
-       \node[below left, color=bright-aqua, scale=1.5]
-           at (0,0)
-           {$0$};
-
-       %coordinates
-       \foreach \x in {-4,-3,-2,-1,1,2,3,4} {
-           \fill[color=bright-aqua]
-               (\x,0)
-               circle
-               (2pt);
-           \node[below, color=bright-aqua]
-               at (\x,0)
-               {$\x$};
-       };
-
-       \foreach \y in {-4,-3,-2,-1,1,2,3,4} {
-           \fill[color=bright-aqua]
-               (0,\y)
-               circle
-               (2pt);
-           \node[left, color=bright-aqua]
-               at (0,\y)
-               {$\y$};
-       };
-
-       %graph y=x
-       \draw[line width=1.5pt, color=neon-red]
-           plot[domain=0:4, samples=100]
-           (\x,{\x});
-
-       %label
-       \node[color=neon-red, scale=1.4]
-           at (3.2,2.4)
-           {$y=x$};
-
-       %shaded rectangle (Q3) with hatching
-       \fill[neon-red, opacity=0.25]
-           (-3.5,-3.5) rectangle (0,0);
-       \draw[line width=1.3pt, color=neon-red]
-           (-3.5,-3.5) rectangle (0,0);
-       \foreach \i in {0,0.4,...,3.5} {
-           \draw[line width=0.9pt, color=neon-red]
-               (-3.5+\i,-3.5) -- (-3.5,-3.5+\i);
-           \draw[line width=0.9pt, color=neon-red]
-               (-3.5+\i,0) -- (0,-3.5+\i);
-       };
-
-       %origin marker
-       \draw[bright-aqua, line width=1.5pt, fill=black]
-           (0,0)
-           circle
-           (2.5pt);
-
-   \end{tikzpicture}
-   \end{document}
-   ```
-
    > [!danger] $(-1,1)$ 應要捨去
-   >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \fill [cparea]
+   >            (axis cs:-1,1)
+   >            -- plot [domain=-1:3.2] (axis cs:\x, {0.5*\x + 1.5})
+   >            -- (axis cs:3.2, -3.2)
+   >            -- plot [domain=3.2:-1] (axis cs:\x, {-\x})
+   >            -- cycle;
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        %graphs
+   >        \addplot [cpgraph, domain=-3.2:3.2]
+   >            {0.5*\x + 1.5}
+   >            node [above right, cpfunc] {$y=\frac{1}{2}x+\frac{3}{2}$};
+   >        \addplot [cpgraph, domain=-3.2:3.2]
+   >            {-\x}
+   >            node [below right, cpfunc] {$y=-x$};
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-4.2,0) -- (4.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-4.2) -- (0,4.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
+   >        %points
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-1,1) (0,1.5)
+   >        };
+   >        \node [cptext, above left] at (axis cs:-3,0) {$(-3,0)$};
+   >        \node [cptext, above right] at (axis cs:0,1.5) {$(0,1.5)$};
    >
-   >       %coordinates
-   >       \foreach \x in {-4,-3,-2,-1,1,2,3,4} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-4,-3,-2,-1,1,2,3,4} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %graoh
-   >       \draw [line width=1.2pt, color=neon-green]
-   >           plot [domain=-4:4, samples=100]
-   >           (\x,{-(\x)});
-   >       \draw [line width=1.2pt, color=neon-green]
-   >           plot [domain=-4:4, samples=100, smooth]
-   >           (\x,{0.5*(\x)+1.5});
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{-(\x)})
-   >           --
-   >           plot [domain=4:-1, samples=100, smooth]
-   >           (\x,{0.5*(\x)+1.5})
-   >           -- cycle;
-   >
-   >       %lines
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{-(\x)});
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           plot [domain=-1:4, samples=100]
-   >           (\x,{0.5*(\x)+1.5});
-   >
-   >       %points
-   >       \draw [neon-green, line width=1.5pt, fill=white]
-   >           (-1,1)
-   >           circle
-   >           (3pt);
-   >       \node [above, color=bright-aqua, scale=1.5]
-   >           at (-1,1)
-   >           {$(-1,1)$};
+   >        %intersection point
+   >        \addplot [only marks, mark=*, mark size=3pt, mark options={fill=white, draw=bright-aqua, line width=1.5pt}]
+   >            coordinates {(-1,1)};
+   >        \node [cptext, above] at (axis cs:-1,1) {$(-1,1)$};
    >
    >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
 5. 作圖 $\{(x,y)|x+\lvert x\rvert=y+\lvert y\rvert\}$
@@ -1148,73 +842,43 @@ $$
    > $$
    >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled area
+   >        \addplot [line width=1.2pt, color=bright-aqua, domain=-3.2:0] {0};
+   >        \addplot [line width=1.2pt, color=bright-aqua, domain=-3.2:0] (0, \x);
+   >        \fill [cparea]
+   >            (axis cs:-3.2,-3.2) -- (axis cs:0,-3.2) -- (axis cs:0,0) -- (axis cs:-3.2,0) -- cycle;
+   >        \addplot [cpgraph, domain=-3.2:3.2]
+   >            {0.5*\x + 1.5}
+   >            node [above right, cpfunc] {$y=\frac{1}{2}x+\frac{3}{2}$};
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-3.2,0) -- (3.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-3.2) -- (0,3.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
-   >
-   >       %coordinates
-   >       \foreach \x in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
-   >
-   >       \foreach \y in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
-   >
-   >       %lines
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           (-3,0) -- (0,0);
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           (0,-3) -- (0,0);
-   >       \draw [line width=1.2pt, color=bright-aqua]
-   >           plot [domain=0:3]
-   >           (\x, {(\x)});
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!check] correct
@@ -1225,90 +889,71 @@ $$
    >
    > $$
    >     \begin{aligned}
-   >         &\text{if }x<0,y<0,x<y\Longrightarrow y-x\le1\\
+   >         &\text{if }x>0,y>0,x<y\Longrightarrow0\le2\\
+   >         &\text{if }x>0,y>0,x\ge y\Longrightarrow y\ge x-1\\
+   >         &\text{if }x<0,y>0,x<y\Longrightarrow x\ge-1\\
+   >         &\text{if }x<0,y<0,x<y\Longrightarrow y\le x+1\\
    >         &\text{if }x<0,y<0,x\ge y\Longrightarrow0\le2\\
-   >         &\text{if }x<0,y\ge 0,x<y\Longrightarrow x\ge1\\
-   >         &\text{if }x<0,y\ge 0,x\ge y\Longrightarrow0\le2\\
-   >         &\text{if }x\ge 0,y<0,x<y\Longrightarrow y\le1\\
-   >         &\text{if }x\ge 0,y<0,x\ge y\Longrightarrow x\le1\\
-   >         &\text{if }x\ge 0,y\ge 0,x<y\Longrightarrow0\le2\\
-   >         &\text{if }x\ge 0,y\ge 0,x\ge y\Longrightarrow x-y\le1
+   >         &\text{if }x>0,y<0,x\ge y\Longrightarrow x\le1\\
    >     \end{aligned}
    > $$
    >
    > ```tikz
-   > \usepackage {xcolor}
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        %axis boundary and ratio
+   >        xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        %axes ticks
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick label style={cptext},
+   >        tick style={draw=none},
+   >        %plotting optimizations
+   >        clip=false,
+   >        axis equal image
+   >    ]
+   >        %filled region
+   >        \fill [cparea]
+   >            (axis cs:0,0) -- (axis cs:0,3) -- (axis cs:3,3) -- (axis cs:3,2)
+   >            -- plot [domain=3:1] (axis cs:\x, {\x-1})
+   >            -- (axis cs:1,0) -- cycle;
    >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
+   >        \fill [cparea]
+   >            (axis cs:-1,0) -- (axis cs:-1,3) -- (axis cs:0,3) -- (axis cs:0,0) -- cycle;
    >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (-5.2,0) -- (5.2,0)
-   >           node [right, color=bright-aqua, scale=1.5]
-   >               {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink]
-   >           (0,-3.2) -- (0,3.2)
-   >           node [above, color=bright-aqua, scale=1.5]
-   >               {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5]
-   >           at (0,0)
-   >           {$0$};
+   >        \fill [cparea]
+   >            (axis cs:0,0) -- (axis cs:0,-3) -- (axis cs:-3,-3) -- (axis cs:-3,-2)
+   >            -- plot [domain=-4:-1, samples=2] (axis cs:\x, {\x+1})
+   >            -- (axis cs:-1,0) -- cycle;
    >
-   >       %coordinates
-   >       \foreach \x in {-5,-4,-3,-2,-1,1,2,3,4,5} {
-   >           \fill [color=bright-aqua]
-   >               (\x,0)
-   >               circle
-   >               (2pt);
-   >           \node [below, color=bright-aqua]
-   >               at (\x,0)
-   >               {$\x$};
-   >       };
+   >        \fill [cparea]
+   >            (axis cs:0,0) -- (axis cs:1,0) -- (axis cs:1,-3) -- (axis cs:0,-3) -- cycle;
    >
-   >       \foreach \y in {-3,-2,-1,1,2,3} {
-   >           \fill [color=bright-aqua]
-   >               (0,\y)
-   >               circle
-   >               (2pt);
-   >           \node [left, color=bright-aqua]
-   >               at (0,\y)
-   >               {$\y$};
-   >       };
+   >        %boundary lines
+   >        \addplot [cpgraph, domain=-2:3] {\x-1}
+   >            node [below right, cptext] {$y=x-1$};
+   >        \addplot [cpgraph, domain=-3:2] {\x+1}
+   >            node [above right, cptext] {$y=x+1$};
+   >        \addplot [cpaux, domain=-3:3] (-1,\x)
+   >            node [left, cptext] {$x=-1$};
+   >        \addplot [cpaux, domain=-3:3] (1,\x)
+   >            node [right, cptext] {$x=1$};
    >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3]
-   >           (-4,-2) -- (4,-2) -- (4,2) -- (-4,2) -- cycle;
-   >
-   >       %lines
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,2) -- (4,2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,-2) -- (4,-2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (-4,2) -- (-4,-2);
-   >       \draw [dashed, line width=1.2pt, color=bright-aqua]
-   >           (4,2) -- (4,-2);
-   >
-   >   \end {tikzpicture}
-   > \end {document}
+   >        %axes ticks
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >        };
+   >        \addplot [only marks, cppoint] coordinates {
+   >            (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >        };
+   >    \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!check] correct
@@ -1326,33 +971,39 @@ $$
    - $f(x)=x^2$
 
      ```tikz
-     \usepackage{xcolor}
+     \begin{tikzpicture}
+        \begin{axis}[
+            %axis boundary and ratio
+            xmin=-3.2, xmax=3.2, ymin=-0.5, ymax=5.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.1)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$f(x)$},
+            %axes ticks
+            xtick={-3,-2,-1,1,2,3}, ytick={1,2,3,4,5},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick label style={cptext},
+            tick style={draw=none},
+            %plotting optimizations
+            clip=false,
+            axis equal image=false
+        ]
+            %x^2 graph
+            \addplot [cpgraph, domain=-3:3, samples=100, thick]
+                {0.5*(\x)^2}
+                node [above right, cpfunc] {$f(x)=x^2$};
 
-     \begin {document}
-         \begin{tikzpicture}[domain=0:4]
-             %colors
-             \definecolor {neon-pink}{HTML}{ff6ec7};
-             \definecolor {neon-fuchsia}{HTML}{fe4164};
-             \definecolor {neon-red}{HTML}{ff3131};
-             \definecolor {neon-orange}{HTML}{ff5f1f};
-             \definecolor {neon-yellow}{HTML}{ffff33};
-             \definecolor {electric-lime}{HTML}{ccff00};
-             \definecolor {neon-green}{HTML}{39ff14};
-             \definecolor {neon-turquoise}{HTML}{0ff0fc};
-             \definecolor {neon-blue}{HTML}{1f51ff};
-             \definecolor {electric-blue}{HTML}{7df9ff};
-             \definecolor {neon-purple}{HTML}{b026ff};
-             \definecolor {neon-violet}{HTML}{9d00ff};
-             \definecolor {neon-magenta}{HTML}{ff00ff};
-             \definecolor {laser-lemon}{HTML}{ffff66};
-             \definecolor {bright-aqua}{HTML}{00ffef};
-             \definecolor {hot-pink}{HTML}{ff6984};
-
-             \draw[->, color=neon-pink, thick] (-3,0) -- (3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-             \draw[->, color=neon-pink, thick] (0,-1) -- (0,5) node[above, color=bright-aqua, scale=1.5] {$f(x)$};
-             \draw[scale=0.5, domain=-3:3, color=neon-purple, thick] plot ({\x}, {\x*\x}) node[right, color=bright-aqua, scale=2] {$f(x)=x^2$};
-         \end{tikzpicture}
-     \end {document}
+            %axes ticks
+            \addplot [only marks, cppoint] coordinates {
+                (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+            };
+            \addplot [only marks, cppoint] coordinates {
+                (0,1) (0,2) (0,3) (0,4) (0,5)
+            };
+        \end{axis}
+     \end{tikzpicture}
      ```
 
 4. `數學式`

@@ -1,0 +1,46 @@
+%===packages===
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fontspec}
+\usepackage{luatexja-fontspec}
+
+%===fonts===
+%main english font
+\setmainfont{Arial}
+
+%monospace code font
+\setmonofont{JetBrains Mono}[
+    Scale=MatchLowercase
+]
+
+%official chinese font (MOE TW-Kai / EduKai)
+\setmainjfont{edukai-5.1.ttf}
+
+%===colors===
+\definecolor{neon-pink}{HTML}{FF6EC7}
+\definecolor{neon-fuchsia}{HTML}{FE4164}
+\definecolor{neon-red}{HTML}{FF3131}
+\definecolor{neon-orange}{HTML}{FF5F1F}
+\definecolor{neon-yellow}{HTML}{FFFF33}
+\definecolor{electric-lime}{HTML}{CCFF00}
+\definecolor{neon-green}{HTML}{39FF14}
+\definecolor{neon-turquoise}{HTML}{0FF0FC}
+\definecolor{neon-blue}{HTML}{1F51FF}
+\definecolor{electric-blue}{HTML}{7DF9FF}
+\definecolor{neon-purple}{HTML}{B026FF}
+\definecolor{neon-violet}{HTML}{9D00FF}
+\definecolor{neon-magenta}{HTML}{FF00FF}
+\definecolor{laser-lemon}{HTML}{FFFF66}
+\definecolor{bright-aqua}{HTML}{00FFEF}
+\definecolor{hot-pink}{HTML}{FF6984}
+
+%===styles===
+\tikzset{
+    cpaxes/.style={line width=1.2pt, color=neon-pink, ->},
+    cppoint/.style={fill=bright-aqua, circle, inner sep=2pt},
+    cptext/.style={color=bright-aqua},
+    cpgraph/.style={color=neon-green, line width=1.2pt},
+    cpfunc/.style={color=neon-green},
+    cparea/.style={fill=bright-aqua, fill opacity=0.3, draw=none},
+    cpaux/.style={dashed, line width=1.2pt, color=neon-fuchsia}
+}
