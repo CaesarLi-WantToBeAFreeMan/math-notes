@@ -51,21 +51,21 @@ title: 0 Functions
 
 ### 數系 (number systems)
 
-| 數系   | 美語               | 符號            | 含義                   |
-| ---- | ---------------- | ------------- | -------------------- |
-| 自然數系 | natural numbers  | $\mathbb {N}$ | 所有正整數                |
-| 整數系  | integers         | $\mathbb {Z}$ | 正整數、零、負整數            |
-| 有理數  | rational numbers | $\mathbb {Q}$ | 可表示為分數的數             |
-| 實數系  | real numbers     | $\mathbb {R}$ | 數線上所有的點的集合，包括有理數與無理數 |
-| 複數系  | complex numbers  | $\mathbb {C}$ | 形如 $a+bi$ 的數         |
+| 數系     | 美語             | 符號          | 含義                                     |
+| -------- | ---------------- | ------------- | ---------------------------------------- |
+| 自然數系 | natural numbers  | $\mathbb {N}$ | 所有正整數                               |
+| 整數系   | integers         | $\mathbb {Z}$ | 正整數、零、負整數                       |
+| 有理數   | rational numbers | $\mathbb {Q}$ | 可表示為分數的數                         |
+| 實數系   | real numbers     | $\mathbb {R}$ | 數線上所有的點的集合，包括有理數與無理數 |
+| 複數系   | complex numbers  | $\mathbb {C}$ | 形如 $a+bi$ 的數                         |
 
 ### 存在量詞 (quantifiers)
 
-| 存在量詞 | 美語              | 符號         | 含義        |
-| ---- | --------------- | ---------- | --------- |
-| 對所有  | for all         | $\forall$  | 所有都滿足，無意外 |
-| 存在   | there exists    | $\exists$  | 只需有一個滿足   |
-| 存在唯一 | there is unique | $\exists!$ | 只存在一個滿足   |
+| 存在量詞 | 美語            | 符號       | 含義               |
+| -------- | --------------- | ---------- | ------------------ |
+| 對所有   | for all         | $\forall$  | 所有都滿足，無意外 |
+| 存在     | there exists    | $\exists$  | 只需有一個滿足     |
+| 存在唯一 | there is unique | $\exists!$ | 只存在一個滿足     |
 
 ### 練習
 
@@ -569,7 +569,6 @@ $$
 \end{tikzpicture}
 ```
 
-
 #### 練習
 
 1. 作圖 $\{(x,y)|-2\le y<1\}$
@@ -622,7 +621,7 @@ $$
    > [!note] my answer
    >
    > ```tikz
-   >\begin{tikzpicture}
+   > \begin{tikzpicture}
    >    \begin{axis}[
    >        %axis boundary and ratio
    >        xmin=-5.2, xmax=5.2, ymin=-3.2, ymax=3.2,
@@ -712,6 +711,7 @@ $$
 4. 作圖 $\{(x,y)|-x\le y<\frac{1}{2}(x+3)\}$
 
    > [!note] my answer
+   >
    > ```tikz
    > \begin{tikzpicture}
    >    \begin{axis}[
@@ -768,6 +768,7 @@ $$
    > ```
 
    > [!danger] $(-1,1)$ 應要捨去
+   >
    > ```tikz
    > \begin{tikzpicture}
    >    \begin{axis}[
@@ -866,9 +867,9 @@ $$
    >        \addplot [line width=1.2pt, color=bright-aqua, domain=-3.2:0] (0, \x);
    >        \fill [cparea]
    >            (axis cs:-3.2,-3.2) -- (axis cs:0,-3.2) -- (axis cs:0,0) -- (axis cs:-3.2,0) -- cycle;
-   >        \addplot [cpgraph, domain=-3.2:3.2]
-   >            {0.5*\x + 1.5}
-   >            node [above right, cpfunc] {$y=\frac{1}{2}x+\frac{3}{2}$};
+   >        \addplot [line width=1.2pt, color=bright-aqua, domain=0:3]
+   >            {\x}
+   >            node [above right, color=bright-aqua] {$y=x$};
    >
    >        %axes ticks
    >        \addplot [only marks, cppoint] coordinates {
@@ -958,6 +959,61 @@ $$
 
    > [!check] correct
 
+### 性質
+
+1. 平面上兩點 $P_1(x_1, y_1)$, $P_2(x_2, y_2)$ 之`距離`為 $\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
+2. 一**非鉛直**之直線通過兩點 $P_1(x_1, y_1)$, $P_2(x_2, y_2)$, 則其`斜率`為 $m=\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1}$
+3. `直線`方程式表示法
+   1. `點斜式`: $y-y_1=m(x-x_1)$
+   2. `斜截式`: $y=mx+b$
+   3. `兩點式`: $(x_2-x_1)(y-y_1)=(x-x_1)(y_2-y_1)$
+   4. `截距式`: $\frac{x}{a}+\frac{y}{b}=1$
+4. 斜率
+   1. 兩**非鉛垂線**`平行`的充要條件是它們的**斜率相等**
+      - $m_n$ 為直線 $l_n$ 的斜率
+      $$
+           l_1\parallel l_2\Longleftrightarrow m_1=m_2
+      $$
+   2. 兩**非鉛垂線**`互相垂直`的充要條件是它們的**斜率互為負倒數**
+      - $m_n$ 為直線 $l_n$ 的斜率
+      $$
+               l_1\perp l_2\Longleftrightarrow m_1\cdot m_2=-1\Longleftrightarrow m_1=-\frac{1}{m_2}
+      $$
+
+#### 練習
+
+1. 考慮以 $A(6, −7)$, $B(11, −3)$, $C(2, −2)$ 為頂點之三角形，求
+   1. 以距離證明它是直角三角形
+
+      > [!note] my answer
+      >
+      > $$
+      >   \begin{aligned}
+      >       &AB=\sqrt{(11-6)^2+[-3-(-7)]^2}=\sqrt{41}\\
+      >       &BC=\sqrt{(2-11)^2+[-2-(-3)]^2}=\sqrt{82}\\
+      >       &AC=\sqrt{(2-6)^2+[-2-(-7)]^2}=\sqrt{41}\\
+      >       &\because AB^2+AC^2=BC^2\\
+      >       &\therefore \triangle ABC \text { 是直角三角形}
+      >   \end{aligned}
+      > $$
+
+   2. 以斜率證明它是直角三角形
+
+      > [!note] my answer
+      >
+      > $$
+      >   \begin{aligned}
+      >       &m_{AB}=\frac{-3+7}{11-6}=\frac{4}{5}\\
+      >       &m_{BC}=\frac{-2+3}{2-11}=-\frac{1}{9}\\
+      >       &m_{AC}=\frac{-2+7}{2-6}=-\frac{5}{4}\\
+      >       &\because m_{AB}\cdot m_{AC}=\frac{4}{5}\cdot-\frac{5}{4}=-1\\
+      >       &\therefore AB\perp AC\\
+      >       &\therefore \triangle ABC \text { 是直角三角形}
+      >   \end{aligned}
+      > $$
+
+   3. 求其面積
+
 # 函數
 
 ## 函數的呈現方式
@@ -1017,47 +1073,12 @@ $$
    - $B$: 對應域 (codomain)
    - $f(A)=\{f(a)|a \in A\} \subset B$：值域 (range)，記為 $\text {Range f}$
 
-   ```tikz
-   \usepackage{xcolor}
-
-   \begin {document}
-       \begin{tikzpicture}
-           %colors
-           \definecolor {neon-pink}{HTML}{ff6ec7};
-           \definecolor {neon-fuchsia}{HTML}{fe4164};
-           \definecolor {neon-red}{HTML}{ff3131};
-           \definecolor {neon-orange}{HTML}{ff5f1f};
-           \definecolor {neon-yellow}{HTML}{ffff33};
-           \definecolor {electric-lime}{HTML}{ccff00};
-           \definecolor {neon-green}{HTML}{39ff14};
-           \definecolor {neon-turquoise}{HTML}{0ff0fc};
-           \definecolor {neon-blue}{HTML}{1f51ff};
-           \definecolor {electric-blue}{HTML}{7df9ff};
-           \definecolor {neon-purple}{HTML}{b026ff};
-           \definecolor {neon-violet}{HTML}{9d00ff};
-           \definecolor {neon-magenta}{HTML}{ff00ff};
-           \definecolor {laser-lemon}{HTML}{ffff66};
-           \definecolor {bright-aqua}{HTML}{00ffef};
-           \definecolor {hot-pink}{HTML}{ff6984};
-
-           %filled circles
-           \fill (0, 0) node[minimum size = 3cm, draw, circle, fill=neon-violet] {};
-           \fill (5, 0) node[minimum size = 3cm, draw, circle, fill=neon-violet] {};
-
-           %texts
-           \node [color=hot-pink, scale=2](a1) at (0,0) {$A$};
-           \node [color=hot-pink, scale=2](b1) at (5,0) {$B$};
-           \node [color=electric-blue, scale=2] at (0,2) {domain};
-           \node [color=electric-blue, scale=2] at (5,2) {range};
-
-           %lines
-           \draw[->, color=electric-blue, thick] (a1) -- node {$f$} (b1);
-
-       \end{tikzpicture}
-   \end {document}
+   ```mermaid
+   flowchart LR
+        A(("domain")) --> B(("range"))
    ```
 
-### assignment 3
+### 練習
 
 1. 求 $f(x)=\sqrt {2+x-x^2}$，的定義域與值域
 
@@ -3510,17 +3531,17 @@ flowchart TB
 ### 圖形
 
 - $\sin(x)$
-                                                      	![[微積分甲/0_函數#^sin-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^sin-tikz-graph]]
 - $\cos(x)$
-                                                      	![[微積分甲/0_函數#^cos-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^cos-tikz-graph]]
 - $\tan(x)$
-                                                      	![[微積分甲/0_函數#^tan-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^tan-tikz-graph]]
 - $\cot(x)$
-                                                      	![[微積分甲/0_函數#^cot-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^cot-tikz-graph]]
 - $\sec(x)$
-                                                      	![[微積分甲/0_函數#^sec-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^sec-tikz-graph]]
 - $\csc(x)$
-                                                      	![[微積分甲/0_函數#^scs-tikz-graph]]
+                                                                                                                              	![[微積分甲/0_函數#^scs-tikz-graph]]
 
 ### 週期
 
