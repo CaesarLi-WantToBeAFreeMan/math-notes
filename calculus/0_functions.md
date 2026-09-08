@@ -1042,63 +1042,64 @@ $$
 
 1. 作圖 $x^4−4x^2−x^2y^2+4y^2=0$
 
-    > [!note] my answer
-    > $$
-    >   \begin{aligned}
-    >      &4y^2-x^2y^2=-x^4+4x^2\\
-    >      &y^2(4-x^2)=x^2(4-x^2)\\
-    >      &(4-x^2)(y^2-x^2)=0\\
-    >      &x=\begin{cases}
-    >         -2\\
-    >         2\\
-    >         -y\\
-    >         y
-    >      \end{cases}$$
+   > [!note] my answer
+   >
+   > $$
+   > \begin{aligned}
+   >    &4y^2-x^2y^2=-x^4+4x^2\\
+   >    &y^2(4-x^2)=x^2(4-x^2)\\
+   >    &(4-x^2)(y^2-x^2)=0\\
+   >    &x=\begin{cases}
+   >        -2\\
+   >        2\\
+   >        -y\\
+   >        y
+   >    \end{cases}
+   > \end{aligned}
+   > $$
+   >
+   > ```tikz
+   > \begin{tikzpicture}
+   >   \begin{axis}[
+   >       %axis boundary and ratio
+   >       xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >       axis lines=middle, axis line style={cpaxes},
+   >       x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >       y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >       xlabel={$x$}, ylabel={$y$},
+   >       %axes ticks
+   >       xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >       extra x ticks={0},
+   >       extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >       extra x tick labels={$0$},
+   >       tick label style={cptext},
+   >       tick style={draw=none},
+   >       %plotting optimizations
+   >       clip=false,
+   >       axis equal image
+   >   ]
+   >       %graphs
+   >       \addplot [cpgraph, domain=-3.2:3.2] (-2,\x)
+   >           node [above, cpfunc] {$x=-2$};
+   >       \addplot [cpgraph, domain=-3.2:3.2] (2,\x)
+   >           node [above, cpfunc] {$x=2$};
+   >       \addplot [cpgraph, domain=-3.2:3.2] {\x}
+   >           node [above right, cpfunc] {$y=x$};
+   >       \addplot [cpgraph, domain=-3.2:3.2] {-\x}
+   >           node [below right, cpfunc] {$y=-x$};
+   >
+   >       %axes ticks
+   >       \addplot [only marks, cppoint] coordinates {
+   >           (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+   >       };
+   >       \addplot [only marks, cppoint] coordinates {
+   >           (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+   >       };
+   >   \end{axis}
+   > \end{tikzpicture}
+   > ```
 
-    >   \end{aligned}
-    > $$
-    > ```tikz
-    > \begin{tikzpicture}
-    >   \begin{axis}[
-    >       %axis boundary and ratio
-    >       xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
-    >       axis lines=middle, axis line style={cpaxes},
-    >       x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
-    >       y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
-    >       xlabel={$x$}, ylabel={$y$},
-    >       %axes ticks
-    >       xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
-    >       extra x ticks={0},
-    >       extra x tick style={ticklabel style={anchor=north east, cptext}},
-    >       extra x tick labels={$0$},
-    >       tick label style={cptext},
-    >       tick style={draw=none},
-    >       %plotting optimizations
-    >       clip=false,
-    >       axis equal image
-    >   ]
-    >       %graphs
-    >       \addplot [cpgraph, domain=-3.2:3.2] (-2,\x)
-    >           node [above, cpfunc] {$x=-2$};
-    >       \addplot [cpgraph, domain=-3.2:3.2] (2,\x)
-    >           node [above, cpfunc] {$x=2$};
-    >       \addplot [cpgraph, domain=-3.2:3.2] {\x}
-    >           node [above right, cpfunc] {$y=x$};
-    >       \addplot [cpgraph, domain=-3.2:3.2] {-\x}
-    >           node [below right, cpfunc] {$y=-x$};
-    >
-    >       %axes ticks
-    >       \addplot [only marks, cppoint] coordinates {
-    >           (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
-    >       };
-    >       \addplot [only marks, cppoint] coordinates {
-    >           (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
-    >       };
-    >   \end{axis}
-    > \end{tikzpicture}
-    > ```
-
-    > [!check] success
+   > [!check] success
 
 # 函數
 
@@ -1155,29 +1156,83 @@ $$
 
 1. 一個立方體無蓋的盒子體積為 $10$ 立方公尺, 底部的長是寬的兩倍。 底的材料成本是每平方公尺 $10$ 元; 側面的材料成本是每平方公尺 $6$ 元。 將盒子的總成本以底部之寬度的函數表出
 
-    $$
-    \begin {aligned}
-       \text{let width}=x,\text{cost}=y\\
-       y&=x\cdot2x\cdot10+2\cdot2x\cdot\frac{10}{2x^2}+2\cdot x\cdot\frac{10}{2x^2}\\
-       &=20x^2+\frac{20}{x}+\frac{10}{x}\\
-       &=20x^2+\frac{30}{x}(x\in(1,\sqrt{5}))
-    \end {aligned}
-    $$
+   > [!note] my answer
+   >
+   > $$
+   > \begin {aligned}
+   >    &\text{let width}=x,\text{cost}=y\\
+   >    y&=x\cdot2x\cdot10+6\cdot2\cdot2x\cdot\frac{10}{2x^2}+6\cdot2\cdot x\cdot\frac{10}{2x^2}\\
+   >    &=20x^2+\frac{120}{2x^2}+\frac{60}{2x^2}\\
+   >    &=20x^2+\frac{60}{x}+\frac{30}{x}\\
+   >    &=20x^2+\frac{90}{x}(x\in(0,\infty))
+   > \end {aligned}
+   > $$
 
-2. 面積為25的直角三角形, 將斜邊長 h 以周長 p 表出
-3. 某地之計程車費率為起跳75元, 超過兩公里後每 500 公尺 5 元, 將費用對里程的函數寫 出。
+2. 面積為$25$的直角三角形, 將斜邊長$h$以周長$p$表出
+
+   > [!note] my answer
+   >
+   > $$
+   > \begin {aligned}
+   >    &\text{let leg}=x\\
+   >    &A=\frac{1}{2}\cdot x\cdot x\\
+   >    &25=\frac{1}{2}x^2\\
+   >    &x=5\sqrt{2}\\
+   >    &p=2x+h\\
+   >    &p=2\cdot5\sqrt{5}+h\\
+   >    &h=p-10\sqrt{2}(p\in(0,\infty))
+   > \end {aligned}
+   > $$
+
+   > [!danger] 這是**等腰直角三角形**的解法，但題目上僅是**直角三角形**
+   >
+   > $$
+   > \begin {aligned}
+   >    &\text{let leg}_1=a,\text{let leg}_2=b\\
+   >    &A=\frac{1}{2}ab\\
+   >    &25=\frac{1}{2}ab\\
+   >    &ab=50\\
+   >    &h=\sqrt{a^2+b^2}\\
+   >    &p=a+b+h\\
+   >    &p-h=a+b\\
+   >    &(p-h)^2=(a+b)^2\\
+   >    &p^2-2ph+h^2=a^2+2ab+b^2\\
+   >    &p^2-2ph+h^2=h^2+100\\
+   >    &p^2-2ph=100\\
+   >    &h=\frac{p^2-100}{2p}(p\in(0,\infty))
+   > \end {aligned}
+   > $$
+
+3. 某地之計程車費率為起跳$75$元, 超過兩公里後每$500$公尺$5元$, 將費用對里程的函數寫出
+
+   > [!note] my answer
+   >
+   > $$
+   > \begin {aligned}
+   >    &\text{let cost}=c,\text{let distance}=s\\
+   >    &c=75+\frac{s-2}{\frac{1}{2}}\cdot5\\
+   >    &c=75+10(s-2)\\
+   >    &c=10s+55(s\in(2,\infty))\\
+   >    &c=\begin{cases}
+   >        75,s\in(0,2]\\
+   >        10s+55,s\in(2,\infty)
+   >    \end{cases}
+   > \end {aligned}
+   > $$
+
+   > [!check] correct
 
 ## 函數定義
 
 1. $f: A \rightarrow B$ 是一個對應，滿足：$\forall a \in A, \exists! b \in B \ni f(a)=b$ （對所有 $a \in A$，存在**唯一** $b \in B$，使得 $f$ 將 $a$ 對應到 $b_a$）
 
-   - $A$: 定義域 (domain)，記為 $\text {Dom}$
+   - $A$: 定義域 (domain)，記為 $\operatorname{Dom}f$
    - $B$: 對應域 (codomain)
-   - $f(A)=\{f(a)|a \in A\} \subset B$：值域 (range)，記為 $\text {Range f}$
+   - $f(A)=\{f(a)|a \in A\} \subset B$：值域 (range)，記為 $\operatorname{Range}f$
 
    ```mermaid
    flowchart LR
-        A(("domain")) --> B(("range"))
+        A(("domain<br>定義域")) --> B(("range<br>對應域"))
    ```
 
 ### 練習
@@ -1185,25 +1240,74 @@ $$
 1. 求 $f(x)=\sqrt {2+x-x^2}$，的定義域與值域
 
    > [!note] my answer
-   > $\begin {aligned} &\text {for domain:}\\ &2+x-x^2 \ge 0 \rightarrow x \in [-1, 2]\\ \\ &\text {for range:}\\ &(\sqrt {-x^2+x+2})_{x \in [-1, 2]} \in [0, \frac 3 2]\\ \\ &\text {Dom}=[-1, 2], \quad \text {Range f}=[0, \frac 3 2] \end {aligned}$
+   >
+   > $$
+   >    \begin{aligned}
+   >        &\text{for domain:}\\
+   >        &2+x-x^2\ge0\rightarrow x\in[-1,2]\\
+   >        &\text{for range:}\\
+   >        &\left(\sqrt{-x^2+x+2}\right)_{x\in[-1,2]}\in\left[0,\frac{3}{2}\right]\\
+   >        &\operatorname{Dom}=[-1,2],\quad\operatorname{Range}f=\left[0,\frac{3}{2}\right]
+   >    \end{aligned}
+   > $$
 
    > [!success] correct
 
-2. 求 $f(x)=\sqrt {\sin \sqrt x}$，的定義域與值域
+2. 求 $f(x)=\sqrt{\sin\sqrt{x}}$，的定義域與值域
 
    > [!note] my answer
-   > $\begin {aligned} &\text {for domain:}\\ &\sin \sqrt x \ge 0 \land x > 0\rightarrow x \in \{x|\pi + 2k\pi, \quad k \in \mathbb z\}\\ \\ &\text {for range}:\\ &\left(\sqrt {\sin \sqrt x}\right)_{x \in \{x|\pi + 2k\pi, \quad k \in \mathbb z\}} = [0, 1]\\ \\ &\text {Dom}=\{x|\pi + 2k\pi, \quad k \in \mathbb z\}, \quad \text {Range f}=[0, 1] \end {aligned}$
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text{for domain:}\\
+   >    &\sin\sqrt{x}\ge0\land x>0\rightarrow x\in\{x|\pi+2k\pi,k\in\mathbb{Z}\}\\
+   >    &\text{for range}:\\
+   >    &\left(\sqrt{\sin\sqrt{x}}\right)_{x\in\{x|\pi+2k\pi,k\in\mathbb{Z}\}}=[0,1]\\
+   >    &\operatorname{Dom}=\{x|\pi+2k\pi,k\in\mathbb{Z}\},\operatorname{Range}f=[0,1]
+   > \end{aligned}
+   > $$
 
-   > [!error] 值域正確，但定義域是 $\text {Dom}=\bigcup_{k=0}^{\infty} [4k^2\pi^2, (2k+1)^2\pi^2]$
-   > $\begin {aligned} &\text {for } \sqrt x \rightarrow x \ge 0\\ &\text{let } t=\sqrt x\\ &\text{for } \sqrt {\sin t} \rightarrow \sin t \ge 0\\ &t \in [2k\pi, (2k+1)\pi], \quad k \in \mathbb Z\\ &\sqrt x \in [2k\pi, (2k+1)\pi], \quad k \in \mathbb Z\\ &x \in [4k^2\pi^2, (2k+1)^2\pi^2], \quad k \in \mathbb Z\\ &\text {Dom}=\bigcup_{k=0}^{\infty} [4k^2\pi^2, (2k+1)^2\pi^2] \end {aligned}$
+   > [!danger] 值域正確，但定義域是 $\operatorname{Dom}=\bigcup_{k=0}^{\infty}[4k^2\pi^2,(2k+1)^2\pi^2]$
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text {for }\sqrt{x}\rightarrow x\ge0\\
+   >    &\text{let }t=\sqrt{x}\\
+   >    &\text{for }\sqrt{\sin t}\rightarrow\sin t\ge0\\
+   >    &t\in[2k\pi,(2k+1)\pi],k\in\mathbb{Z}\\
+   >    &\sqrt{x}\in[2k\pi,(2k+1)\pi],k\in\mathbb{Z}\\
+   >    &x\in[4k^2\pi^2,(2k+1)^2\pi^2],k\in\mathbb{Z}\\
+   >    &\operatorname{Dom}=\bigcup_{k=0}^{\infty}[4k^2\pi^2,(2k+1)^2\pi^2]
+   > \end{aligned}
+   > $$
 
-3. 求 $f(x)=\sqrt {x^2-1}+\frac 1 {\sqrt {4 - x^2}}$，的定義域與值域
+3. 求 $f(x)=\sqrt{x^2-1}+\frac{1}{\sqrt{4-x^2}}$，的定義域與值域
 
    > [!note] my answer
-   > $\begin {aligned} &\text {for doamin:}\\ &x^2-1 \ge 0 \land 4-x^2>0 \rightarrow x \in (-2, -1] \cup [1, 2)\\ \\ &\text {for range:}\\ &\left(\sqrt {x^2-1}+\frac 1 {\sqrt {4-x^2}}\right)_{x \in (-2, -1] \cup [1, 2)}=\text {IDK😢} \end {aligned}$
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text {for doamin:}\\
+   >    &x^2-1\ge0\land4-x^2>0\rightarrow x\in(-2,-1]\cup[1,2)\\
+   >    &\text{for range:}\\
+   >    &\left(\sqrt{x^2-1}+\frac{1}{\sqrt{4-x^2}}\right)_{x\in(-2,-1]\cup[1, 2)}=\text{IDK😢}
+   > \end{aligned}
+   > $$
 
-   > [!error] 定義域正確，值域為 $[\frac 1 {\sqrt 3}, \infty]$
-   > $\begin{aligned} &\text{let } t= \sqrt{x^2-1}, \quad t^2=x^2-1, \quad x^2=t^2+1\\ &x^2-1 \ge 0 \land 4-x^2>0 \rightarrow x^2 \in [1,4)\\ &1 \le t^2+1<4 \rightarrow t^2 \in [0,3) \rightarrow t\in[0,\sqrt 3)\\ &\text{range becomes solving } g(t)=t+ \frac 1 {\sqrt {3-t^2}}, \quad t \in[0,\sqrt 3)\\ &3-t^2>0 \rightarrow \sqrt {3-t^2} \in(0,\sqrt 3]\\ &\because g(t) \text{ is an increasing function}\\ &\therefore g_{\min}=g(0)=\frac 1 {\sqrt 3}, \quad g_{\max}=\lim_{t \to \sqrt 3^-}g(t)=\infty\\ \\ &\text {Range f}= \left[\frac 1 {\sqrt 3}, \infty \right) \end{aligned}$
+   > [!danger] 定義域正確，值域為 $\left[\frac{1}{\sqrt{3}},\infty\right]$
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text{let }t=\sqrt{x^2-1},t^2=x^2-1,x^2=t^2+1\\
+   >    &x^2-1\ge0\land4-x^2>0\rightarrow x^2\in[1,4)\\
+   >    &1\le t^2+1<4\rightarrow t^2\in[0,3)\rightarrow t\in\left[0,\sqrt{3}\right)\\
+   >    &\text{range becomes solving }g(t)=t+\frac{1}{\sqrt{3-t^2}},t\in\left[0,\sqrt{3}\right)\\
+   >    &3-t^2>0\rightarrow\sqrt{3-t^2}\in\left(0,\sqrt{3}\right]\\
+   >    &\because g(t)\text{ is an increasing function}\\
+   >    &\therefore g_{\min}=g(0)=\frac{1}{\sqrt{3}},g_{\max}=\lim_{t\to\sqrt{3}^-}g(t)=\infty\\
+   >    &\operatorname{Range}f=\left[\frac{1}{\sqrt{3}},\infty\right)
+   > \end{aligned}
+   > $$
 
 ## 一對一映成
 
@@ -1212,92 +1316,163 @@ $$
 3. **一對一** 的條件等價於 $f(x_1)=f(x_2) \Rightarrow x_1=x_2$
 
 ```tikz
-\usepackage{xcolor}
+\begin{tikzpicture}
+    %filled circles
+    \fill (0,0) node[minimum size=3cm, draw, circle, fill=neon-violet] {};
+    \fill (5,0) node[minimum size=3cm, draw, circle, fill=neon-violet] {};
 
-\begin {document}
-    \begin{tikzpicture}
-        %colors
-        \definecolor {neon-pink}{HTML}{ff6ec7};
-        \definecolor {neon-fuchsia}{HTML}{fe4164};
-        \definecolor {neon-red}{HTML}{ff3131};
-        \definecolor {neon-orange}{HTML}{ff5f1f};
-        \definecolor {neon-yellow}{HTML}{ffff33};
-        \definecolor {electric-lime}{HTML}{ccff00};
-        \definecolor {neon-green}{HTML}{39ff14};
-        \definecolor {neon-turquoise}{HTML}{0ff0fc};
-        \definecolor {neon-blue}{HTML}{1f51ff};
-        \definecolor {electric-blue}{HTML}{7df9ff};
-        \definecolor {neon-purple}{HTML}{b026ff};
-        \definecolor {neon-violet}{HTML}{9d00ff};
-        \definecolor {neon-magenta}{HTML}{ff00ff};
-        \definecolor {laser-lemon}{HTML}{ffff66};
-        \definecolor {bright-aqua}{HTML}{00ffef};
-        \definecolor {hot-pink}{HTML}{ff6984};
+    %texts
+    \node [color=hot-pink] (a1) at (0,0.75) {$a_1$};
+    \node [color=hot-pink] (a2) at (0,-0.75) {$a_2$};
+    \node [color=hot-pink] (b1) at (5,0) {$b_1$};
+    \node [color=neon-orange, scale=1.5] at (0,-2) {$a_1\ne a_2$};
+    \node [color=neon-orange, scale=1.5] at (5,-2) {$f(a_1)=f(a_2)$};
+    \node [color=electric-blue, scale=2] at (0,2) {domain};
+    \node [color=electric-blue, scale=2] at (5,2) {range};
 
-        %filled circles
-        \fill (0, 0) node[minimum size = 3cm, draw, circle, fill=neon-violet] {};
-        \fill (5, 0) node[minimum size = 3cm, draw, circle, fill=neon-violet] {};
-
-        %texts
-        \node [color=hot-pink, scale=2](a1) at (0,0.75) {$a_1$};
-        \node [color=hot-pink, scale=2](a2) at (0,-0.75) {$a_2$};
-        \node [color=hot-pink, scale=2](b1) at (5,0) {$b_1$};
-        \node [color=neon-orange, scale=1.5] at (0,-3) {$a_1 \ne a_2$};
-        \node [color=neon-orange, scale=1.5] at (5,-3) {$f(a_1)=f(a_2)$};
-        \node [color=electric-blue, scale=2] at (0,2) {domain};
-        \node [color=electric-blue, scale=2] at (5,2) {range};
-
-        %lines
-        \draw[->, color=electric-blue, thick] (a1) -- node[above, pos=0.45] {$f(a_1)$} (b1);
-        \draw[->, color=bright-aqua, thick] (a2) -- node[below, pos=0.45] {$f(a_2)$} (b1);
-
-    \end{tikzpicture}
-\end {document}
+    %arrows
+    \draw[->, color=electric-blue, line width=1.2pt] (a1) -- node[above, pos=0.45] {$f(a_1)$} (b1);
+    \draw[->, color=bright-aqua, line width=1.2pt] (a2) -- node[below, pos=0.45] {$f(a_2)$} (b1);
+\end{tikzpicture}
 ```
 
-### assignment 4
+### 練習
 
 1. 證明 $y=x^3$ 為一對一函數
 
-> [!note] my answer
-> $\begin {aligned} &\text {assume } f(x_1)=f(x_2) \Rightarrow x_1^3=x_2^3\\ &x_1^3-x_2^3=0\\ &(x_1-x_2)(x_1^2+x_1x_2+x_2^2)=0\\ &x_1-x_2=0 \lor x_1^2+x_1x_2+x_2^2=0\\ &\text {for } x_1-x_2=0 \Rightarrow x_1=x_2\\ &\text {for } x_1^2+x_1x_2+x_2^2=0\\ &x_1^2+x_1x_2+x_2^2=0 \Rightarrow x_1(x_1+\frac 1 2 x_2)^2+\frac 3 4 x_2^2\\ &\because (x_1+\frac 1 2 x_2)^2 \ge 0 \land x_2^2 \ge 0\\ &\therefore =0 \text { only } x_1=x_2=0\\ &\therefore y=x^3 \text { is a one-to-one function} \end {aligned}$
+   > [!note] my answer
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text {assume }f(x_1)=f(x_2)\Longleftrightarrow x_1^3=x_2^3\\
+   >    &x_1^3-x_2^3=0\\
+   >    &(x_1-x_2)(x_1^2+x_1x_2+x_2^2)=0\\
+   >    &x_1-x_2=0\lor x_1^2+x_1x_2+x_2^2=0\\
+   >    &\text{for }x_1-x_2=0\Longleftrightarrow x_1=x_2\\
+   >    &\text{for }x_1^2+x_1x_2+x_2^2=0\\
+   >    &x_1^2+x_1x_2+x_2^2=0\Longleftrightarrow x_1(x_1+\frac{1}{2}x_2)^2+\frac{3}{4}x_2^2\\
+   >    &\because(x_1+\frac{1}{2}x_2)^2\ge0\land x_2^2\ge0\\
+   >    &\therefore=0\text{ only }x_1=x_2=0\\
+   >    &\therefore y=x^3\text{ is a one-to-one function}
+   > \end{aligned}
+   > $$
 
-> [!success] correct
+   > [!success] correct
 
 ---
 
 # 函數運算
 
 1. 四則運算
-   1. $(f \pm g)(x) = f(x) \pm g(x), \quad \text {Dom}(f \pm g)= \text {Dom}f \cap \text {Dom}g$
-   2. $(f \cdot g)(x) = f(x)g(x), \quad \text {Dom}(f \cdot g)= \text {Dom}f \cap \text {Dom}g$
-   3. $f(\frac f g)(x)=\frac {f(x)} {g(x)}, \quad \text {Dom}f \cap \text {Dom}g \cap \{x|g(x)\ne 0\}$
+   1. $(f\pm g)(x)=f(x)\pm g(x),\quad\operatorname{Dom}(f\pm g)=\operatorname{Dom}f\cap\operatorname{Dom}g$
+   2. $(f\cdot g)(x)=f(x)g(x),\quad\quad\quad\operatorname{Dom}(f\cdot g)=\operatorname{Dom}f\cap\operatorname{Dom}g$
+   3. $f(\frac{f}{g})(x)=\frac{f(x)}{g(x)},\quad\quad\quad\quad\quad\operatorname{Dom}f\cap\operatorname{Dom}g\cap\{x|g(x)\ne0\}$
 2. 合成運算 (composite functions)
-   1. $(f \circ g)(x)=f(g(x)), \quad \text{Dom}(f \circ g)(x) = \{x \in \text {Dom}(g)|g(x) \in \text {Dom}f\}$
+   1. $(f\circ g)(x)=f(g(x)),\quad\quad\quad\operatorname{Dom}(f\circ g)(x)=\{x\in\operatorname{Dom}(g)|g(x)\in\operatorname{Dom}f\}$
 
-## assignment 5
+## 練習
 
-1. 設 $f(x)=x,g(x)=\frac 1 x$，且 $h(x)=(f \cdot g)(x)=x \frac 1 x=1$，則函數 $h$ 的定義域 $\text {Dom} h$ 應為 $\mathbb R / \{0\}$，而非 $\mathbb R$
+1. 設 $f(x)=x,g(x)=\frac{1}{x}$，且 $h(x)=(f\cdot g)(x)=x\frac{1}{x}=1$，則函數 $h$ 的定義域 $\operatorname{Dom}h$ 應為 $\mathbb{R}-\{0\}$，而非 $\mathbb{R}$
 
    > [!note] my answer: **對**
-   > $\begin {aligned} \text {Dom}(f \cdot g)(x)&=\text {Dom}f \cap \text {Dom}g\\ &=\mathbb R \cap \left[\left(-\infty, 0\right) \cup (0, \infty)\right]\\ &=\mathbb R / \{0\}\\ &\therefore \text {correct} \end {aligned}$
+   >
+   > $$
+   > \begin{aligned}
+   >    \operatorname{Dom}(f\cdot g)(x)&=\operatorname{Dom}f\cap\operatorname{Dom}g\\
+   >    &=\mathbb{R}\cap[(-\infty, 0)\cup(0,\infty)]\\
+   >    &=\mathbb{R}-\{0\}\\
+   >    &\therefore\text{correct}
+   > \end{aligned}
+   > $$
 
    > [!success] correct
 
-2. 令 $f(x)= \sqrt x,g(x)=\sqrt {2-x}$，求 $f \circ g,g \circ f,f \circ f,g \circ g$ 及它們的定義域
-
-   > [!note] my answe
-   > $\begin {aligned} &f \circ g= \sqrt {\sqrt {2 - x}}\\ &\text {Dom}(f \circ g)=2-x \ge 0 \Rightarrow x \in (-\infty, 2]\\ \\ &g \circ f = \sqrt {2 - \sqrt x}\\ &\text {Dom}(g \circ f)= x \ge 0 \land 2- \sqrt x \ge 0 \Rightarrow x \in [0,4]\\ \\ &f \circ f = \sqrt {\sqrt x}\\ &\text {Dom}(f \circ f)=x \ge 0\\ \\ &g \circ g = \sqrt {2- \sqrt {2-x}}\\ &\text {Dom}(g \circ g)=2-x \ge 0 \land 2 - \sqrt {2-x} \ge 0 \Rightarrow x \in [-2, 2] \end {aligned}$
-
-   > [!success] correct
-
-3. 若 $f_0(x)= \frac x {x+1}$ 且 $f_{n+1}=f_0 \circ f_n,n=0,1,2,\dots$，求 $f_n(x)$ 的公式
+2. 求函數 $f(x)=\frac{x+1}{1+\frac{1}{x+1}}$ 之定義域
 
    > [!note] my answer
-   > $\begin {aligned} &\text {let } n=0:\\ f_1&=f_0 \circ f_0\\ &=\frac x {x+1} \circ \frac x {x+1}\\ &=\frac x {2x+1}\\ \\ &\text {let }n=1:\\ f_2&=f_0 \circ f_1\\ &=\frac x {x+1} \circ \frac x {2x+1}\\ &=\frac x {3x+1}\\ \\ &\therefore f_n(x)=\frac x {(n+1)x+1} \end {aligned}$
+   >
+   > $$
+   >   \begin{aligned}
+   >       &x+1\ne0\land\frac{1}{x+1}\ne-1\\
+   >       &x\ne-1\land x\ne-2\\
+   >       &\operatorname{Dom}f=(-\infty,-2)\cup(-2,-1)\cup(-1,\infty)
+   >   \end{aligned}
+   > $$
 
-   > [!error] 結果正確，但需要證明
-   > $\begin {aligned} &\text {prove } f_n(x)= \frac x {(n+1)x+1}, \quad n \in \mathbb N \cup \{0\}\\ &\text {for }n=0:\\ &f_0(x)=\frac x {(0+1)x+1} = \frac x {x+1} \quad \text{(matches definition)}\\ &\text {let } f_k(x)=\frac x {(k+1)x+1}, \quad k \in \mathbb N \cup \{0\}\\ &\text {let } f_{k+1}(x) = (f_0 \circ f_k)(x):\\ &f_{k+1}(x) = \frac {\frac x{(k+1)x+1}}{\frac x {(k+1)x+1}+1}\\ &= \frac x {x+(k+1)x+1}\\ &= \frac x {(k+2)x+1}\\ &= \frac x {((k+1)+1)x+1}\\ &\text {prooved} \end {aligned}$
+   > [!check] correct
+
+3. 令 $F(x)=\cos^2(x+9)$，求函數 $f$,$g$,$h$ 使得 $F=f\circ g\circ h$
+
+   > [!note] my answer
+   >
+   > $$
+   > \begin{aligned}
+   >   &\text{assume }f(x)=x^2,g(x)=\cos(x),h(x)=x+9\\
+   >   &(g\circ h)(x)=\cos(x+9)\\
+   >   &(f\circ g\circ h)(x)=\cos^2(x+9)\\
+   >   &\therefore f(x)=x^2,g(x)=\cos(x),h(x)=x+9
+   > \end{aligned}
+   > $$
+
+   > [!check] success
+
+4. 令 $f(x)=\sqrt{x},g(x)=\sqrt{2-x}$，求 $f\circ g,g\circ f,f\circ f,g\circ g$ 及它們的定義域
+
+   > [!note] my answe
+   >
+   > $$
+   > \begin{aligned}
+   >    &(f\circ g)(x)= \sqrt{\sqrt{2-x}}\\
+   >    &\operatorname{Dom}(f\circ g)(x)=2-x\ge0\Longrightarrow x\in(-\infty,2]\\
+   >    &(g\circ f)(x)=\sqrt{2-\sqrt{x}}\\
+   >    &\operatorname{Dom}(g\circ f)(x)= x\ge0\land2-\sqrt{x}\ge0\Longrightarrow x\in[0,4]\\
+   >    &(f\circ f)(x)=\sqrt{\sqrt{x}}\\
+   >    &\operatorname{Dom}(f\circ f)(x)=x\ge0\\
+   >    &(g\circ g)(x)=\sqrt{2-\sqrt{2-x}}\\
+   >    &\operatorname{Dom}(g\circ g)(x)=2-x\ge0\land2-\sqrt{2-x}\ge0\Longrightarrow x\in[-2, 2]
+   > \end{aligned}
+   > $$
+
+   > [!success] correct
+
+5. 若 $f_0(x)=\frac{x}{x+1}$ 且 $f_{n+1}=f_0\circ f_n,n=0,1,2,\dots$，求 $f_n(x)$ 的公式
+
+   > [!note] my answer
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text {let }n=0:\\
+   >    f_1(x)&=(f_0\circ f_0)(x)\\
+   >    &=\frac{x}{x+1}\circ\frac{x}{x+1}\\
+   >    &=\frac{x}{2x+1}\\
+   >    &\text{let }n=1:\\
+   >    f_2(x)&=(f_0\circ f_1)(x)\\
+   >    &=\frac{x}{x+1}\circ\frac{x}{2x+1}\\
+   >    &=\frac{x}{3x+1}\\
+   >    &\therefore f_n(x)=\frac{x}{(n+1)x+1}
+   > \end{aligned}
+   > $$
+
+   > [!danger] 結果正確，但需要證明
+   >
+   > $$
+   > \begin{aligned}
+   >    &\text{prove }f_n(x)=\frac{x}{(n+1)x+1},\quad n\in\mathbb{N}\cup\{0\}\\
+   >    &\text{for }n=0:\\
+   >    &f_0(x)=\frac{x}{(0+1)x+1}=\frac{x}{x+1}\quad\text{(matches definition)}\\
+   >    &\text{let }f_k(x)=\frac{x}{(k+1)x+1},\quad k\in\mathbb{N}\cup\{0\}\\
+   >    &\text{let }f_{k+1}(x)=(f_0\circ f_k)(x):\\
+   >    &f_{k+1}(x)=\frac{\frac{x}{(k+1)x+1}}{\frac{x}{(k+1)x+1}+1}\\
+   >    &=\frac{x}{x+(k+1)x+1}\\
+   >    &=\frac{x}{(k+2)x+1}\\
+   >    &= \frac{x}{((k+1)+1)x+1}\\
+   >    &\text{prooved}
+   > \end{aligned}
+   > $$
+
+6. 若 $g(x)=2x+1$ 且 $h(x)=4x^2+4x+7$
+   1. 求一函數 $f(x)$ 使得 $f\circ g=h$
+   2. 求一函數 $f(x)$ 使得 $g\circ f=h$
 
 ---
 
@@ -3322,11 +3497,11 @@ flowchart TB
 
 ## 奇偶性
 
-1. 若 $\forall x \in \text {Dom}f,f(-x)=f(x)$，則 $f(x)$ 稱為`偶函數` (`even function`)
+1. 若 $\forall x \in \operatorname{Dom}f,f(-x)=f(x)$，則 $f(x)$ 稱為`偶函數` (`even function`)
 
    - 對`y 軸`對稱
 
-2. 若 $\forall x \in \text {Dom}f,f(-x)=-f(x)$，則 $f(x)$ 稱為`奇函數` (`odd function`)
+2. 若 $\forall x \in \operatorname{Dom}f,f(-x)=-f(x)$，則 $f(x)$ 稱為`奇函數` (`odd function`)
 
    - 對`原點`對稱
 
@@ -3633,17 +3808,17 @@ flowchart TB
 ### 圖形
 
 - $\sin(x)$
-                                                                                                                              	![[微積分甲/0_函數#^sin-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^sin-tikz-graph]]
 - $\cos(x)$
-                                                                                                                              	![[微積分甲/0_函數#^cos-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^cos-tikz-graph]]
 - $\tan(x)$
-                                                                                                                              	![[微積分甲/0_函數#^tan-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^tan-tikz-graph]]
 - $\cot(x)$
-                                                                                                                              	![[微積分甲/0_函數#^cot-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^cot-tikz-graph]]
 - $\sec(x)$
-                                                                                                                              	![[微積分甲/0_函數#^sec-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^sec-tikz-graph]]
 - $\csc(x)$
-                                                                                                                              	![[微積分甲/0_函數#^scs-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^scs-tikz-graph]]
 
 ### 週期
 
