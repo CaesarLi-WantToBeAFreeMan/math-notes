@@ -993,9 +993,11 @@ $$
       >       &BC=\sqrt{(2-11)^2+[-2-(-3)]^2}=\sqrt{82}\\
       >       &AC=\sqrt{(2-6)^2+[-2-(-7)]^2}=\sqrt{41}\\
       >       &\because AB^2+AC^2=BC^2\\
-      >       &\therefore \triangle ABC \text { 是直角三角形}
+      >       &\therefore \triangle ABC \text { is a right triangle}
       >   \end{aligned}
       > $$
+
+      > [!check] correct
 
    2. 以斜率證明它是直角三角形
 
@@ -1008,11 +1010,95 @@ $$
       >       &m_{AC}=\frac{-2+7}{2-6}=-\frac{5}{4}\\
       >       &\because m_{AB}\cdot m_{AC}=\frac{4}{5}\cdot-\frac{5}{4}=-1\\
       >       &\therefore AB\perp AC\\
-      >       &\therefore \triangle ABC \text { 是直角三角形}
+      >       &\therefore \triangle ABC \text { is a right triangle}
       >   \end{aligned}
       > $$
 
+      > [!check] correct
+
    3. 求其面積
+
+      > [!note] my answer
+      >
+      > $$
+      >   \begin{aligned}
+      >       &\text {let }\angle CAB=\theta\\
+      >       &\sin\theta=1\\
+      >       A&=\frac{1}{2}\cdot\sqrt{41}\cdot\sqrt{41}\cdot1\\
+      >       &=\frac{41}{2}
+      >   \end{aligned}
+      > $$
+
+      > [!check] correct
+
+### 平面圖形方程式
+
+1. `圓`: $(x-h)^2+(y-k)^2=r^2$
+2. `拋物線` $y=ax^2+bx+c$ or $x=ay^2+by+c$
+3. `橢圓`: $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$
+4. `雙曲線`: $\frac{(x-h)^2}{a^2}-\frac{(y-k)^2}{b^2}=1$ or $\frac{(y-k)^2}{a^2}-\frac{(x-h)^2}{b^2}=1$
+
+#### 練習
+
+1. 作圖 $x^4−4x^2−x^2y^2+4y^2=0$
+
+    > [!note] my answer
+    > $$
+    >   \begin{aligned}
+    >      &4y^2-x^2y^2=-x^4+4x^2\\
+    >      &y^2(4-x^2)=x^2(4-x^2)\\
+    >      &(4-x^2)(y^2-x^2)=0\\
+    >      &x=\begin{cases}
+    >         -2\\
+    >         2\\
+    >         -y\\
+    >         y
+    >      \end{cases}$$
+
+    >   \end{aligned}
+    > $$
+    > ```tikz
+    > \begin{tikzpicture}
+    >   \begin{axis}[
+    >       %axis boundary and ratio
+    >       xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+    >       axis lines=middle, axis line style={cpaxes},
+    >       x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+    >       y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+    >       xlabel={$x$}, ylabel={$y$},
+    >       %axes ticks
+    >       xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+    >       extra x ticks={0},
+    >       extra x tick style={ticklabel style={anchor=north east, cptext}},
+    >       extra x tick labels={$0$},
+    >       tick label style={cptext},
+    >       tick style={draw=none},
+    >       %plotting optimizations
+    >       clip=false,
+    >       axis equal image
+    >   ]
+    >       %graphs
+    >       \addplot [cpgraph, domain=-3.2:3.2] (-2,\x)
+    >           node [above, cpfunc] {$x=-2$};
+    >       \addplot [cpgraph, domain=-3.2:3.2] (2,\x)
+    >           node [above, cpfunc] {$x=2$};
+    >       \addplot [cpgraph, domain=-3.2:3.2] {\x}
+    >           node [above right, cpfunc] {$y=x$};
+    >       \addplot [cpgraph, domain=-3.2:3.2] {-\x}
+    >           node [below right, cpfunc] {$y=-x$};
+    >
+    >       %axes ticks
+    >       \addplot [only marks, cppoint] coordinates {
+    >           (-3,0) (-2,0) (-1,0) (1,0) (2,0) (3,0)
+    >       };
+    >       \addplot [only marks, cppoint] coordinates {
+    >           (0,-3) (0,-2) (0,-1) (0,1) (0,2) (0,3)
+    >       };
+    >   \end{axis}
+    > \end{tikzpicture}
+    > ```
+
+    > [!check] success
 
 # 函數
 
@@ -1064,6 +1150,22 @@ $$
 
 4. `數學式`
    - $f(x)=x^2$
+
+### 練習
+
+1. 一個立方體無蓋的盒子體積為 $10$ 立方公尺, 底部的長是寬的兩倍。 底的材料成本是每平方公尺 $10$ 元; 側面的材料成本是每平方公尺 $6$ 元。 將盒子的總成本以底部之寬度的函數表出
+
+    $$
+    \begin {aligned}
+       \text{let width}=x,\text{cost}=y\\
+       y&=x\cdot2x\cdot10+2\cdot2x\cdot\frac{10}{2x^2}+2\cdot x\cdot\frac{10}{2x^2}\\
+       &=20x^2+\frac{20}{x}+\frac{10}{x}\\
+       &=20x^2+\frac{30}{x}(x\in(1,\sqrt{5}))
+    \end {aligned}
+    $$
+
+2. 面積為25的直角三角形, 將斜邊長 h 以周長 p 表出
+3. 某地之計程車費率為起跳75元, 超過兩公里後每 500 公尺 5 元, 將費用對里程的函數寫 出。
 
 ## 函數定義
 
