@@ -1472,13 +1472,40 @@ $$
 
 6. 若 $g(x)=2x+1$ 且 $h(x)=4x^2+4x+7$
    1. 求一函數 $f(x)$ 使得 $f\circ g=h$
+
+        > [!note] my answer
+        > $$
+        > \begin {aligned}
+        >   &\text{assume }f(x)=x^2+6\\
+        >   (f\circ g)(x)&=(2x+1)^2+6\\
+        >   &=4x^2+4x+7\\
+        >   &=h(x)\\
+        >   &\therefore f(x)=x^2+6
+        > \end {aligned}
+        > $$
+
+        > [!check] success
+
    2. 求一函數 $f(x)$ 使得 $g\circ f=h$
+
+        > [!note] my answer
+        > $$
+        > \begin {aligned}
+        >   &\text{assume }f(x)=2x^2+2x+3\\
+        >   (g\circ f)(x)&=2(2x^2+2x+3)+1\\
+        >   &=4x^2+4x+7\\
+        >   &=h(x)\\
+        >   &\therefore f(x)=2x^2+2x+3
+        > \end {aligned}
+        > $$
+
+        > [!check] success
 
 ---
 
 # 函數圖形
 
-若 $A, B ⊂ \mathbb R$，則 $f$ 稱為**實數值函數** (`real valued functiuon`)，集合 $\{(x,f(x)):x \in A\}$ 稱為 $f$ 的圖形 `graph`
+若 $A,B\subset\mathbb{R}$，則 $f:A\rightarrow B$ 稱為**實數值函數** (`real valued functiuon`)，集合 $\{(x,f(x)):x\in A\}$ 稱為 $f$ 的圖形 `graph`
 
 ## 判別法
 
@@ -1490,147 +1517,212 @@ $$
    - 是判斷一個**函數**是**一對一**的**充要條件**
 
 ```tikz
-\usepackage{xcolor}
+\begin{tikzpicture}
+    %left diagram
+    \begin{axis}[
+        name=left,
+        at={(0,0)},
+        xmin=-1, xmax=3, ymin=-1, ymax=3.5,
+        axis lines=middle, axis line style={cpaxes},
+        x label style={at={(axis description cs:1,0.28)}, anchor=north west, cptext},
+        y label style={at={(axis description cs:0.27,1)}, anchor=south, cptext},
+        xlabel={$x$}, ylabel={$y$},
+        xtick=\empty, ytick=\empty,
+        extra x ticks={0},
+        extra x tick style={ticklabel style={anchor=north east, cptext}},
+        extra x tick labels={$0$},
+        tick style={draw=none},
+        clip=false,
+        width=6cm, height=6cm
+    ]
+        %curve
+        \addplot [cpgraph, smooth] coordinates {
+            (-0.25,0.3) (0,1.5) (0.5,0.7) (1,2.5) (1.5,1.3) (2,1.7) (2.5,1.2)
+        };
 
-\begin {document}
-    \begin{tikzpicture}[domain=0:4]
-        %colors
-        \definecolor {neon-pink}{HTML}{ff6ec7};
-        \definecolor {neon-fuchsia}{HTML}{fe4164};
-        \definecolor {neon-red}{HTML}{ff3131};
-        \definecolor {neon-orange}{HTML}{ff5f1f};
-        \definecolor {neon-yellow}{HTML}{ffff33};
-        \definecolor {electric-lime}{HTML}{ccff00};
-        \definecolor {neon-green}{HTML}{39ff14};
-        \definecolor {neon-turquoise}{HTML}{0ff0fc};
-        \definecolor {neon-blue}{HTML}{1f51ff};
-        \definecolor {electric-blue}{HTML}{7df9ff};
-        \definecolor {neon-purple}{HTML}{b026ff};
-        \definecolor {neon-violet}{HTML}{9d00ff};
-        \definecolor {neon-magenta}{HTML}{ff00ff};
-        \definecolor {laser-lemon}{HTML}{ffff66};
-        \definecolor {bright-aqua}{HTML}{00ffef};
-        \definecolor {hot-pink}{HTML}{ff6984};
+        %vertical line
+        \addplot [cpaux] coordinates {(1.5,-1) (1.5,3.5)};
+        \addplot [only marks, cppoint] coordinates {(1.5,1.3)};
 
-        %---left diagram---
-        %lines
-        \draw [color=neon-green, thick] plot [smooth] coordinates {(-0.25,0.3)  (0,1.5) (0.5,0.7) (1,2.5) (1.5,1.3) (2,1.7) (2.5,1.2)};
-        \draw [color=neon-red, thick] plot coordinates {(1.5,-1) (1.5,4)};
-        \fill (1.5,1.3)[neon-red, thick] circle [radius=2pt];
+        %labels
+        \node [cptext, right] at (axis cs:1.5,3) {$x=a$};
+        \node [cptext, right] at (axis cs:1.5,1) {$(a,b)$};
+        \node [cptext, below] at (axis cs:1.7,0) {$a$};
+        \node [cptext, scale=1.5] at (axis cs:1,-1.5) {function graph};
+    \end{axis}
 
-        %texts
-        \draw[->, color=neon-pink, thick] (-1,0) -- (3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-        \draw[->, color=neon-pink, thick] (0,-1) -- (0,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-        \node [left, color=bright-aqua, scale=1.5] at (0,-0.3) {$0$};
-        \node [right, color=bright-aqua, scale=1.5] at (1.5,3) {$x=a$};
-        \node [right, color=bright-aqua, scale=1.5] at (1.5,1) {$(a,b)$};
-        \node [below, color=bright-aqua, scale=1.5] at (1.7,0) {$a$};
-        \node [color=bright-aqua, scale=2] at (1,-1.5) {function graph};
+    %middle diagram
+    \begin{axis}[
+        name=middle,
+        at={(7cm,0)},
+        xmin=-1, xmax=3, ymin=-1, ymax=3.5,
+        axis lines=middle, axis line style={cpaxes},
+        x label style={at={(axis description cs:1,0.28)}, anchor=north west, cptext},
+        y label style={at={(axis description cs:0.27,1)}, anchor=south, cptext},
+        xlabel={$x$}, ylabel={$y$},
+        xtick=\empty, ytick=\empty,
+        extra x ticks={0},
+        extra x tick style={ticklabel style={anchor=north east, cptext}},
+        extra x tick labels={$0$},
+        tick style={draw=none},
+        clip=false,
+        width=6cm, height=6cm
+    ]
+        %curve
+        \addplot [cpgraph, smooth] coordinates {
+            (-0.75,0.3) (0,1.5) (0.5,0.7) (1,2.5) (1.5,1.3) (2,1.7) (2.5,1.2)
+            (1.5,0.5) (1.3,0.8)
+        };
 
-        %---middle diagram---
-        %lines
-        \draw [color=neon-green, thick] plot [smooth] coordinates {(6.25,0.3)  (7,1.5) (7.5,0.7) (8,2.5) (8.5,1.3) (9,1.7) (9.5,1.2) (8.5,0.5) (8.3,0.8)};
-        \draw [color=neon-red, thick] plot coordinates {(8.5,-1) (8.5,4)};
-        \fill (8.5,1.3)[neon-red, thick] circle [radius=2pt];
-        \fill (8.5,0.5)[neon-red, thick] circle [radius=2pt];
+        %vertical line
+        \addplot [cpaux] coordinates {(1.5,-1) (1.5,3.5)};
+        \addplot [only marks, cppoint] coordinates {(1.5,1.3) (1.5,0.5)};
 
-        %texts
-        \draw[->, color=neon-pink, thick] (6,0) -- (10,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-        \draw[->, color=neon-pink, thick] (7,-1) -- (7,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-        \node [left, color=bright-aqua, scale=1.5] at (7,-0.3) {$0$};
-        \node [right, color=bright-aqua, scale=1.5] at (8.5,3) {$x=a$};
-        \node [right, color=bright-aqua, scale=1.5] at (8.5,1) {$(a,b)$};
-        \node [below, color=bright-aqua, scale=1.5] at (8.7,0) {$a$};
-        \node [color=bright-aqua, scale=2] at (8,-1.5) {not a function graph};
+        %labels
+        \node [cptext, right] at (axis cs:1.5,3) {$x=a$};
+        \node [cptext, right] at (axis cs:1.5,1) {$(a,b)$};
+        \node [cptext, below] at (axis cs:1.7,0) {$a$};
+        \node [cptext, scale=1.5] at (axis cs:1,-1.5) {not a function graph};
+    \end{axis}
 
-        %---right diagram---
-        %lines
-        \draw [color=neon-green, thick, shift={(15,0)}, scale=0.5] plot [domain=-3:3] (\x, \x*\x-3);
-        \draw [color=neon-red, thick] plot coordinates {(13,1.5) (17,1.5)};
-        \fill (13.75,1.5)[neon-red, thick] circle [radius=2pt];
-        \fill (16.25,1.5)[neon-red, thick] circle [radius=2pt];
+    %right diagram
+    \begin{axis}[
+        name=right,
+        at={(14cm,0)},
+        xmin=-3.2, xmax=3.2, ymin=-2.2, ymax=3.2,
+        axis lines=middle, axis line style={cpaxes},
+        x label style={at={(axis description cs:1,0.45)}, anchor=north west, cptext},
+        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+        xlabel={$x$}, ylabel={$y$},
+        xtick=\empty, ytick=\empty,
+        extra x ticks={0},
+        extra x tick style={ticklabel style={anchor=north east, cptext}},
+        extra x tick labels={$0$},
+        tick style={draw=none},
+        clip=false,
+        width=6cm, height=6cm
+    ]
+        %parabola
+        \addplot [cpgraph, domain=-3:3, samples=100] {0.5*(\x)^2-1.5};
 
-        %texts
-        \draw[->, color=neon-pink, thick] (13,0) -- (17,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-        \draw[->, color=neon-pink, thick] (15,-2) -- (15,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-        \node [left, color=bright-aqua, scale=1.5] at (15,-0.3) {$0$};
-        \node [color=bright-aqua, scale=2] at (15.5,-2.5) {a one-to-one function};
-    \end{tikzpicture}
-\end {document}
+        %horizontal line
+        \addplot [cpaux] coordinates {(-3.2,0.5) (3.2,0.5)};
+        \addplot [only marks, cppoint] coordinates {(-2,0.5) (2,0.5)};
+
+        %label
+        \node [cptext, scale=1.5] at (axis cs:0,-2.5) {not a one-to-one function};
+    \end{axis}
+\end{tikzpicture}
 ```
 
 ## 函數圖形的變動
 
-1. 鉛直方向平移：$y=f(x)+c$ ^4cfa45
-2. 水平方向平移：$y=f(x+c)$
+1. 鉛直方向平移：$y=f(x)+k$
+2. 水平方向平移：$y=f(x+h)$
 3. 鉛直方向伸縮：$y=cf(x)$
 4. 水平方向伸縮：$y=f(cx)$
+5. $y=f(x)$ 對 `x-軸`的鏡射：$y=-f(x)$
+6. $y=f(x)$ 對 `y-軸`的鏡射：$y=f(-x)$
 
 > [!HINT] 小撇步
 > (**c>0**)
->
-> 1. $f(x)+c \quad \uparrow$
-> 2. $f(x)-c \quad \downarrow$
-> 3. $f(x+c) \quad \leftarrow$
-> 4. $f(x-c) \quad \rightarrow$
-> 5. $\frac {f(x)} c \quad \frac {\downarrow} {\uparrow}$
-> 6. $cf(x) \quad \frac {\uparrow} {\downarrow}$
-> 7. $f(cx) \quad \rightarrow \leftarrow$
-> 8. $f(\frac x c) \quad \leftarrow \rightarrow$
+> 1. $f(x)+c\quad\uparrow$
+> 2. $f(x)-c\quad\downarrow$
+> 3. $f(x+c)\quad\leftarrow$
+> 4. $f(x-c)\quad\rightarrow$
+> 5. $\frac{f(x)}{c}\quad\frac{\downarrow}{\uparrow}$
+> 6. $cf(x)\quad\frac{\uparrow}{\downarrow}$
+> 7. $f(cx)\quad\rightarrow\leftarrow$
+> 8. $f(\frac{x}{c})\quad\leftarrow\rightarrow$
+> 9. `x-軸`的鏡射$\quad y$取相反數
+> 10. `y-軸`的鏡射$\quad x$取相反數
+
 
 ```tikz
-\usepackage{xcolor}
+\begin{tikzpicture}
+    %left diagram
+    \begin{axis}[
+        name=left,
+        at={(0,0)},
+        xmin=-1, xmax=12, ymin=-3, ymax=10,
+        axis lines=middle, axis line style={cpaxes},
+        x label style={at={(axis description cs:1,0.25)}, anchor=north west, cptext},
+        y label style={at={(axis description cs:0.08,1)}, anchor=south, cptext},
+        xlabel={$x$}, ylabel={$y$},
+        xtick=\empty, ytick=\empty,
+        extra x ticks={0},
+        extra x tick style={ticklabel style={anchor=north east, cptext}},
+        extra x tick labels={$0$},
+        tick style={draw=none},
+        clip=false,
+        width=11cm, height=9cm
+    ]
+        %y=f(x)
+        \addplot [cpgraph, domain=-1.2:1.2, shift={(5,1)}] {(\x)^2}
+            node [above, cptext] {$y=f(x)$};
+        %y=f(x+c)
+        \addplot [cpgraph, color=neon-orange, domain=-1.2:1.2, shift={(2,1)}] {(\x)^2)}
+            node [above, color=neon-orange] {$y=f(x+c)$};
 
-\begin {document}
-    \begin{tikzpicture}[domain=0:4]
-        %colors
-        \definecolor {neon-pink}{HTML}{ff6ec7};
-        \definecolor {neon-fuchsia}{HTML}{fe4164};
-        \definecolor {neon-red}{HTML}{ff3131};
-        \definecolor {neon-orange}{HTML}{ff5f1f};
-        \definecolor {neon-yellow}{HTML}{ffff33};
-        \definecolor {electric-lime}{HTML}{ccff00};
-        \definecolor {neon-green}{HTML}{39ff14};
-        \definecolor {neon-turquoise}{HTML}{0ff0fc};
-        \definecolor {neon-blue}{HTML}{1f51ff};
-        \definecolor {electric-blue}{HTML}{7df9ff};
-        \definecolor {neon-purple}{HTML}{b026ff};
-        \definecolor {neon-violet}{HTML}{9d00ff};
-        \definecolor {neon-magenta}{HTML}{ff00ff};
-        \definecolor {laser-lemon}{HTML}{ffff66};
-        \definecolor {bright-aqua}{HTML}{00ffef};
-        \definecolor {hot-pink}{HTML}{ff6984};
+        %y=f(x-c)
+        \addplot [cpgraph, color=neon-yellow, domain=-1.2:1.2, shift={(8,1)}] {(\x)^2}
+            node [above, color=neon-yellow] {$y=f(x-c)$};
 
-        %---left diagram---
-        %lines
-        \draw [line width=1.5pt, neon-green, shift={(5,1)}] plot [domain=-1.2:1.2] (\x, {(\x)^2}) node [above, scale=1.5, color=neon-green] {$y=f(x)$};
-        \draw [line width=1.5pt, neon-orange, shift={(2,1)}] plot [domain=-1.2:1.2] (\x, {(\x)^2}) node [above, scale=1.5, neon-orange] {$y=f(x+c)$};;
-        \draw [line width=1.5pt, neon-yellow, shift={(8,1)}] plot [domain=-1.2:1.2] (\x, {(\x)^2}) node [above, scale=1.5, color=neon-yellow] {$y=f(x-c)$};
-        \draw [line width=1.5pt, neon-fuchsia, shift={(5,4)}] plot [domain=-1.2:1.2] (\x, {(\x)^2}) node [above, scale=1.5, neon-fuchsia] {$y=f(x)+c$};
-        \draw [line width=1.5pt, neon-magenta, shift={(5,-3)}] plot [domain=-1.2:1.2] (\x, {(\x)^2}) node [above, scale=1.5, neon-magenta] {$y=f(x)-c$};
+        %y=f(x)+c
+        \addplot [cpgraph, color=neon-fuchsia, domain=-1.2:1.2, shift={(5,4)}] {(\x)^2}
+            node [above, color=neon-fuchsia] {$y=f(x)+c$};
 
-        %texts
-        \draw[->, color=neon-pink, thick] (-1,0) -- (10,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-        \draw[->, color=neon-pink, thick] (0,-3) -- (0,6) node[above, color=bright-aqua, scale=1.5] {$y$};
-        \node [left, color=bright-aqua, scale=1.5] at (0,-0.3) {$0$};
+        %y=f(x)-c
+        \addplot [cpgraph, color=neon-magenta, domain=-1.2:1.2, shift={(5,-2)}] {(\x)^2}
+            node [above, color=neon-magenta] {$y=f(x)-c$};
+    \end{axis}
 
-        %---right diagram---
-        %lines
-        \draw [line width=1.5pt, electric-blue, shift={(15,0)}] plot [domain=0.5:3.7] (\x, {(\x-2)^3-3*(\x-2)+4}) node [above, scale=1.5, color=electric-blue] {$f(x)$};
-        \draw [line width=1.5pt, neon-pink, dashed, shift={(15,0)}] plot [domain=-3.7:-0.5] (\x, {(-\x-2)^3-3*(-\x-2)+4}) node [below, scale=1.5, neon-pink] {$f(-x)$};
-        \draw [line width=1.5pt, neon-green, shift={(15,0)}] plot [domain=0.7:3.5] (\x, {2*((\x-2)^3-3*(\x-2)+4)}) node [above, scale=1.5] {$2f(x)$};
-        \draw [line width=1.5pt, neon-orange, shift={(15,0)}] plot [domain=0.5:3.7] (\x, {0.5*((\x-2)^3-3*(\x-2)+4)}) node [below right, scale=1.5] {$\frac 1 2 f(x)$};
-        \draw [line width=1.5pt, neon-purple, dash dot, shift={(15,0)}] plot [domain=0.5:3.7] (\x, {-((\x-2)^3-3*(\x-2)+4)}) node [right, scale=1.5] {$-f(x)$};
+    %right diagram
+    \begin{axis}[
+        name=right,
+        at={(12cm,0)},
+        xmin=-4, xmax=5, ymin=-7, ymax=13,
+        axis lines=middle, axis line style={cpaxes},
+        x label style={at={(axis description cs:1,0.37)}, anchor=north west, cptext},
+        y label style={at={(axis description cs:0.45,1)}, anchor=south, cptext},
+        xlabel={$x$}, ylabel={$y$},
+        xtick=\empty, ytick=\empty,
+        extra x ticks={0},
+        extra x tick style={ticklabel style={anchor=north east, cptext}},
+        extra x tick labels={$0$},
+        tick style={draw=none},
+        clip=false,
+        width=10cm, height=12cm
+    ]
+        %f(x)
+        \addplot [cpgraph, color=electric-blue, domain=0.5:3.7]
+            {(\x-2)^3-3*(\x-2)+4}
+            node [above, color=electric-blue] {$f(x)$};
 
-        %texts
-        \draw[->, color=neon-pink, thick] (11,0) -- (20.5,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-        \draw[->, color=neon-pink, thick] (15,-6.5) -- (15,12) node[above, color=bright-aqua, scale=1.5] {$y$};
-        \node [left, color=bright-aqua, scale=1.5] at (15,-0.3) {$0$};
-    \end{tikzpicture}
-\end {document}
+        %f(-x)
+        \addplot [cpgraph, color=neon-pink, dashed, domain=-3.7:-0.5]
+            {(-\x-2)^3-3*(-\x-2)+4}
+            node [below, color=neon-pink] {$f(-x)$};
+
+        %2f(x)
+        \addplot [cpgraph, color=neon-green, domain=0.7:3.5]
+            {2*((\x-2)^3-3*(\x-2)+4)}
+            node [above, color=neon-green] {$2f(x)$};
+
+        %(1/2)f(x)
+        \addplot [cpgraph, color=neon-orange, domain=0.5:3.7]
+            {0.5*((\x-2)^3-3*(\x-2)+4)}
+            node [below right, color=neon-orange] {$\frac{1}{2}f(x)$};
+
+        %-f(x)
+        \addplot [cpgraph, color=neon-purple, dashdotted, domain=0.5:3.7]
+            {-((\x-2)^3-3*(\x-2)+4)}
+            node [right, color=neon-purple] {$-f(x)$};
+    \end{axis}
+\end{tikzpicture}
 ```
 
-## assignment 6
+## 練習
 
 1. 作圖 $f(x)=x^2+3$
 
