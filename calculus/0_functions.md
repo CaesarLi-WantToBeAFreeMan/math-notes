@@ -2164,7 +2164,7 @@ $$
 
    > [!check] correct
 
-1. 作 $y=1-\sin(2x)$ 之圖形
+2. 作 $y=1-\sin(2x)$ 之圖形
 
    > [!note] my answer
    >
@@ -2275,7 +2275,7 @@ $$
 
    > [!check] correct
 
-1. 作 $f(x)=\frac{1}{1-x}$ 之圖形
+3. 作 $f(x)=\frac{1}{1-x}$ 之圖形
 
    > [!note] my answer
    >
@@ -2311,7 +2311,7 @@ $$
    >
    >     %middle diagram
    >     \begin{axis}[
-   >         name=right,
+   >         name=middle,
    >         at={(13cm,0)},
    >         xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
    >         axis lines=middle, axis line style={cpaxes},
@@ -2367,7 +2367,7 @@ $$
 
    > [!check] correct
 
-1. $f(x)=\lvert x^2-1\rvert$ 之圖形
+4. $f(x)=\lvert x^2-1\rvert$ 之圖形
 
    > [!note] my answer
    >
@@ -2407,6 +2407,117 @@ $$
    > ```
 
    > [!success] correct
+
+5. 對不同的 $c$ 作 $f(x)=x^3+cx$ 之圖形
+
+   > [!note] my answer
+   > ```tikz
+   > \begin{tikzpicture}
+   >    %left diagram
+   >    \begin{axis}[
+   >        name=left,
+   >        at={(0,0)},
+   >        xmin=-2.2, xmax=2.2, ymin=-8.2, ymax=8.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick=\empty, ytick=\empty,
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=10cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2:2] {(\x)^3}
+   >             node [below left, cpfunc] {$f(x)=x^3$};
+   >    \end{axis}
+   >    \node [cptext, scale=1.5] at (3.2,0) {c=0};
+   >
+   >    %middle diagram
+   >    \begin{axis}[
+   >        name=middle,
+   >        at={(9cm,0)},
+   >        xmin=-2.2, xmax=2.2, ymin=-10.2, ymax=10.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick=\empty, ytick=\empty,
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=10cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2:2] {(\x)^3+\x}
+   >             node [below left, cpfunc] {$f(x)=x^3+cx$};
+   >    \end{axis}
+   >    \node [cptext, scale=1.5] at (12.2,0) {c>0};
+   >
+   >    %right diagram
+   >    \begin{axis}[
+   >        name=right,
+   >        at={(18cm,0)},
+   >        xmin=-2.2, xmax=2.2, ymin=-6.2, ymax=6.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick=\empty, ytick=\empty,
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=10cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2:2] {(\x)^3-\x}
+   >             node [below left, cpfunc] {$f(x)=x^3-cx$};
+   >    \end{axis}
+   >    \node [cptext, scale=1.5] at (21.2,0) {c<0};
+   > \end{tikzpicture}
+   > ```
+
+   > [!success] correct
+
+6. 作 $f(x)=\sin(50x)$ 之圖形
+
+   > [!note] my answer
+   > ```tikz
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        name=left,
+   >        at={(0,0)},
+   >        xmin=-0.06*pi, xmax=0.06*pi, ymin=-1.2, ymax=1.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.21)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick={-0.06*pi,-0.04*pi,-0.02*pi,0.02*pi,0.04*pi,0.06*pi}, ytick={-1,1},
+   >        xticklabels={$-\frac{3\pi}{50}$,$-\frac{2\pi}{50}$,$-\frac{\pi}{50}$,$\frac{\pi}{50}$,$\frac{2\pi}{50}$,$\frac{3\pi}{50}$},
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=12cm, height=8cm
+   >    ]
+   >        \addplot [cpgraph, domain=-0.06*pi:0.06*pi] {sin(deg(50*\x))};
+   > \end{axis}
+   > \end{tikzpicture}
+   > ```
+
+   > [!success] correct
+
+7. 作 $f(x)=\sin(x)+\frac{1}{100}\cos(100x)$ 之圖形
+8. 以函數圖形求 $\cos(x)=x$ 的解
 
 ## 分段定義的函數
 
