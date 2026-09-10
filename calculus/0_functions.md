@@ -1473,33 +1473,35 @@ $$
 6. 若 $g(x)=2x+1$ 且 $h(x)=4x^2+4x+7$
    1. 求一函數 $f(x)$ 使得 $f\circ g=h$
 
-        > [!note] my answer
-        > $$
-        > \begin {aligned}
-        >   &\text{assume }f(x)=x^2+6\\
-        >   (f\circ g)(x)&=(2x+1)^2+6\\
-        >   &=4x^2+4x+7\\
-        >   &=h(x)\\
-        >   &\therefore f(x)=x^2+6
-        > \end {aligned}
-        > $$
+      > [!note] my answer
+      >
+      > $$
+      > \begin {aligned}
+      >   &\text{assume }f(x)=x^2+6\\
+      >   (f\circ g)(x)&=(2x+1)^2+6\\
+      >   &=4x^2+4x+7\\
+      >   &=h(x)\\
+      >   &\therefore f(x)=x^2+6
+      > \end {aligned}
+      > $$
 
-        > [!check] success
+      > [!check] success
 
    2. 求一函數 $f(x)$ 使得 $g\circ f=h$
 
-        > [!note] my answer
-        > $$
-        > \begin {aligned}
-        >   &\text{assume }f(x)=2x^2+2x+3\\
-        >   (g\circ f)(x)&=2(2x^2+2x+3)+1\\
-        >   &=4x^2+4x+7\\
-        >   &=h(x)\\
-        >   &\therefore f(x)=2x^2+2x+3
-        > \end {aligned}
-        > $$
+      > [!note] my answer
+      >
+      > $$
+      > \begin {aligned}
+      >   &\text{assume }f(x)=2x^2+2x+3\\
+      >   (g\circ f)(x)&=2(2x^2+2x+3)+1\\
+      >   &=4x^2+4x+7\\
+      >   &=h(x)\\
+      >   &\therefore f(x)=2x^2+2x+3
+      > \end {aligned}
+      > $$
 
-        > [!check] success
+      > [!check] success
 
 ---
 
@@ -1626,6 +1628,7 @@ $$
 
 > [!HINT] 小撇步
 > (**c>0**)
+>
 > 1. $f(x)+c\quad\uparrow$
 > 2. $f(x)-c\quad\downarrow$
 > 3. $f(x+c)\quad\leftarrow$
@@ -1636,7 +1639,6 @@ $$
 > 8. $f(\frac{x}{c})\quad\leftarrow\rightarrow$
 > 9. `x-軸`的鏡射$\quad y$取相反數
 > 10. `y-軸`的鏡射$\quad x$取相反數
-
 
 ```tikz
 \begin{tikzpicture}
@@ -1724,120 +1726,684 @@ $$
 
 ## 練習
 
-1. 作圖 $f(x)=x^2+3$
+1. 由 $y=\sqrt{x}$ 之圖形作
+   1. $y=\sqrt{x}-2$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (8.2,3) {shift down 2 units};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (10.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(11cm,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-3.2, ymax=1,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.8)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5.2] {sqrt(\x)-2}
+      >             node [above right, cpfunc] {$y=\sqrt{x}-2$};
+      >
+      >         %point
+      >         \addplot [only marks, cppoint] coordinates {(0,-2)};
+      >         \node [cptext, left] at (axis cs:0,-2) {$-2$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+
+   2. $y=\sqrt{x-2}$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (8.2,3) {shift right 2 units};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (10.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(11cm,0)},
+      >         xmin=-0.2, xmax=6.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.1)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.03,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=2:6.2] {sqrt(\x-2)}
+      >             node [above right, cpfunc] {$y=\sqrt{x-2}$};
+      >
+      >         %point
+      >         \addplot [only marks, cppoint] coordinates {(2,0)};
+      >         \node [cptext, below] at (axis cs:2,0) {$2$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+
+   3. $y=-\sqrt{x}$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (9.2,3) {reflection across the x-axis};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (12.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(13cm,0)},
+      >         xmin=-0.2, xmax=3.2, ymin=-3.2, ymax=0.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.97)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick=\empty, ytick=\empty,
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:3.2] {-sqrt(\x)}
+      >             node [below right, cpfunc] {$y=-\sqrt{x}$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+
+   4. $y=2\sqrt{x}$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={1,2,3,4,5}, ytick={1,2,3},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (8.2,3) {vertical stretch};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (10.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(11cm,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=6.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.06)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={1,2,3,4,5}, ytick={1,2,3,4,5,6},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5.2] {2*sqrt(\x)}
+      >             node [above right, cpfunc] {$y=2\sqrt{x}$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+
+   5. $y=\sqrt{2x}$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={1,2,3,4,5}, ytick={1,2,3},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (9.2,3) {horizontal compression};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (12.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(13cm,0)},
+      >         xmin=-0.2, xmax=2.6, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={1,2}, ytick={1,2,3},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:2.6] {sqrt(2*\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{2x}$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+
+   6. $y=\sqrt{-x}$
+
+      > [!note] my answer
+      >
+      > ```tikz
+      > \begin{tikzpicture}
+      >     %left diagram
+      >     \begin{axis}[
+      >         name=left,
+      >         at={(0,0)},
+      >         xmin=-0.2, xmax=5.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.04,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={1,2,3,4,5}, ytick={1,2,3},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:5] {sqrt(\x)}
+      >             node [above right, cpfunc] {$y=\sqrt{x}$};
+      >     \end{axis}
+      >
+      >     %arrow
+      >     \node [cptext, scale=1.5] at (9.2,3) {reflection across the y-axis};
+      >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (12.2,2.5);
+      >
+      >     %right diagram
+      >     \begin{axis}[
+      >         name=right,
+      >         at={(13cm,0)},
+      >         xmin=-5.2, xmax=0.2, ymin=-0.2, ymax=3.2,
+      >         axis lines=middle, axis line style={cpaxes},
+      >         x label style={at={(axis description cs:1,0.1)}, anchor=north west, cptext},
+      >         y label style={at={(axis description cs:0.95,1)}, anchor=south, cptext},
+      >         xlabel={$x$}, ylabel={$y$},
+      >         xtick={-5,-4,-3,-2,-1}, ytick={1,2,3},
+      >         tick label style={cptext},
+      >         extra x ticks={0},
+      >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+      >         extra x tick labels={$0$},
+      >         tick style={draw=none},
+      >         clip=false,
+      >         width=7cm, height=6cm
+      >     ]
+      >         \addplot [cpgraph, domain=0:-5.2] {sqrt(-\x)}
+      >             node [above left, cpfunc] {$y=\sqrt{-x}$};
+      >     \end{axis}
+      > \end{tikzpicture}
+      > ```
+
+      > [!check] correct
+1. 作 $f(x)=x^2+6x+10$ 之圖形
 
    > [!note] my answer
    >
+   > $$
+   >    f(x)=x^2+6x+10=(x+3)^2+1
+   > $$
+   >
    > ```tikz
-   > \usepackage{xcolor}
+   > \begin{tikzpicture}
+   >     %left diagram
+   >     \begin{axis}[
+   >         name=left,
+   >         at={(0,0)},
+   >         xmin=-2.2, xmax=2.2, ymin=-0.2, ymax=5.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-2,-1,1,2}, ytick={1,2,3,4,5},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-2.2:2.2] {(\x)^2}
+   >             node [above right, cpfunc] {$y=x^2$};
+   >     \end{axis}
    >
-   > \begin {document}
-   >   \begin{tikzpicture}[domain=0:4]
-   >       %colors
-   >       \definecolor {neon-pink}{HTML}{ff6ec7};
-   >       \definecolor {neon-fuchsia}{HTML}{fe4164};
-   >       \definecolor {neon-red}{HTML}{ff3131};
-   >       \definecolor {neon-orange}{HTML}{ff5f1f};
-   >       \definecolor {neon-yellow}{HTML}{ffff33};
-   >       \definecolor {electric-lime}{HTML}{ccff00};
-   >       \definecolor {neon-green}{HTML}{39ff14};
-   >       \definecolor {neon-turquoise}{HTML}{0ff0fc};
-   >       \definecolor {neon-blue}{HTML}{1f51ff};
-   >       \definecolor {electric-blue}{HTML}{7df9ff};
-   >       \definecolor {neon-purple}{HTML}{b026ff};
-   >       \definecolor {neon-violet}{HTML}{9d00ff};
-   >       \definecolor {neon-magenta}{HTML}{ff00ff};
-   >       \definecolor {laser-lemon}{HTML}{ffff66};
-   >       \definecolor {bright-aqua}{HTML}{00ffef};
-   >       \definecolor {hot-pink}{HTML}{ff6984};
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (8.2,3) {shift left 3 units};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (10.2,2.5);
    >
-   >       %---left diagram---
-   >       %lines
-   >       \draw [line width=1.5pt, neon-green] plot [domain=-2:2] (\x, {(\x)^2}) node [above, scale=1.5, color=neon-green] {$y=x^2$};
+   >     %middle diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(11cm,0)},
+   >         xmin=-5.2, xmax=0.2, ymin=-0.2, ymax=5.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.95,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-5,-4,-3,-2,-1}, ytick={1,2,3,4,5},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-5.2:-0.8] {(\x+3)^2}
+   >             node [above left, cpfunc] {$(x+3)^2$};
+   >     \end{axis}
    >
-   >       %texts
-   >       \draw[->, color=neon-pink, thick] (-2,0) -- (2,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw[->, color=neon-pink, thick] (0,-1) -- (0,4) node[above, color=bright-aqua, scale=1.5] {$y$};
-   >       \draw[line width=1.5pt, ->, color=bright-aqua] (4,0) -- (6,0) node [above, color=bright-aqua, pos=0.5, scale=1.5] {move upward};
-   >       \node [left, color=bright-aqua, scale=1.5] at (0,-0.3) {$0$};
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (20.2,3) {shift up 1 unit};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (18.2,2.5) -- (22.2,2.5);
    >
-   >       %---right diagram---
-   >       %lines
-   >       \draw [line width=1.5pt, neon-green, shift={(9,0)}] plot [domain=-2:2] (\x, {(\x)^2+3}) node [above, scale=1.5, color=neon-green] {$y=x^2+3$};
-   >       \fill [hot-pink] (9,3) circle (2pt) node [below right, hot-pink, scale=1.5] {$(0, 3)$};
-   >
-   >       %texts
-   >       \draw[->, color=neon-pink, thick] (7,0) -- (11,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw[->, color=neon-pink, thick] (9,-1) -- (9,7) node[above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [left, color=bright-aqua, scale=1.5] at (9,-0.3) {$0$};
-   >
-   >   \end{tikzpicture}
-   > \end {document}
+   >     %right diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(23cm,0)},
+   >         xmin=-5.2, xmax=0.2, ymin=-0.2, ymax=6.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.09)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.95,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-5,-4,-3,-2,-1}, ytick={1,2,3,4,5,6},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-5.2:-0.8] {(\x+3)^2+1}
+   >             node [above left, cpfunc] {$(x+3)^2+1$};
+   >     \end{axis}
+   > \end{tikzpicture}
    > ```
 
-   > [!success] correct
+   > [!check] correct
 
-2. 作圖$f(x)=\frac 1 {1-x}$
+1. 作 $y=1-\sin(2x)$ 之圖形
 
    > [!note] my answer
    >
    > ```tikz
-   > \usepackage{xcolor}
+   > \begin{tikzpicture}
+   >     %first diagram
+   >     \begin{axis}[
+   >         name=left,
+   >         at={(0,0)},
+   >         xmin=-2*pi, xmax=2*pi, ymin=-1.2, ymax=1.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-6,-5,-4,-3,-2,-1,1,2,3,4,5,6}, ytick={-1,1},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-2*pi:2*pi] {sin(deg(\x))}
+   >             node [below right, cpfunc] {$y=\sin(x)$};
+   >     \end{axis}
    >
-   > \begin {document}
-   >   \begin{tikzpicture}[domain=0:4]
-   >       %colors
-   >       \definecolor {neon-pink}{HTML}{ff6ec7};
-   >       \definecolor {neon-fuchsia}{HTML}{fe4164};
-   >       \definecolor {neon-red}{HTML}{ff3131};
-   >       \definecolor {neon-orange}{HTML}{ff5f1f};
-   >       \definecolor {neon-yellow}{HTML}{ffff33};
-   >       \definecolor {electric-lime}{HTML}{ccff00};
-   >       \definecolor {neon-green}{HTML}{39ff14};
-   >       \definecolor {neon-turquoise}{HTML}{0ff0fc};
-   >       \definecolor {neon-blue}{HTML}{1f51ff};
-   >       \definecolor {electric-blue}{HTML}{7df9ff};
-   >       \definecolor {neon-purple}{HTML}{b026ff};
-   >       \definecolor {neon-violet}{HTML}{9d00ff};
-   >       \definecolor {neon-magenta}{HTML}{ff00ff};
-   >       \definecolor {laser-lemon}{HTML}{ffff66};
-   >       \definecolor {bright-aqua}{HTML}{00ffef};
-   >       \definecolor {hot-pink}{HTML}{ff6984};
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (9.2,3) {horizontal compression};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (12.2,2.5);
    >
-   >       %---left diagram---
-   >       \draw[line width=1.5pt, neon-green] plot [domain=-3:-0.35] (\x, {1/\x}) node [left, scale=1.5, color=neon-green] {$y=\frac 1 x$};
-   >       \draw[line width=1.5pt, neon-green] plot [domain=0.35:3] (\x, {1/\x}) node [above right, scale=1.5, neon-green] {$y=\frac 1 x$};
+   >     %second diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(13cm,0)},
+   >         xmin=-2*pi, xmax=2*pi, ymin=-1.2, ymax=1.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-6,-5,-4,-3,-2,-1,1,2,3,4,5,6}, ytick={-1,1},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-2*pi:2*pi] {sin(deg(2*\x))}
+   >             node [below right, cpfunc] {$y=\sin(2x)$};
+   >     \end{axis}
    >
-   >       %texts
-   >       \draw[->, color=neon-pink, thick] (-3,0) -- (3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw[->, color=neon-pink, thick] (0,-3) -- (0,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-   >       \draw[line width=1.5pt, ->, color=bright-aqua] (4,0) -- (6,0) node [above, color=bright-aqua, pos=0.5, scale=1.5] {reverse};
-   >       \node [left, color=bright-aqua, scale=1.5] at (0,-0.3) {$0$};
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (22.2,3) {reflection across the x-axis};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (19.2,2.5) -- (25.2,2.5);
    >
-   >       %---middle diagram---
-   >       %lines
-   >       \draw[line width=1.5pt, neon-green, shift={(10,0)}] plot [domain=-3:-0.35] (\x, {-1/\x}) node [left, scale=1.5, color=neon-green] {$y=-\frac 1 x$};
-   >       \draw[line width=1.5pt, neon-green, shift={(10,0)}] plot [domain=0.35:3] (\x, {-1/\x}) node [below right, scale=1.5, neon-green] {$y=-\frac 1 x$};
+   >     %third diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(25cm,0)},
+   >         xmin=-2*pi, xmax=2*pi, ymin=-1.2, ymax=1.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-6,-5,-4,-3,-2,-1,1,2,3,4,5,6}, ytick={-1,1},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-2*pi:2*pi] {-sin(deg(2*\x))}
+   >             node [below right, cpfunc] {$-\sin(2x)$};
+   >     \end{axis}
    >
-   >       %texts
-   >       \draw[->, color=neon-pink, thick] (7,0) -- (13,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw[->, color=neon-pink, thick] (10,-3) -- (10,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-   >       \draw[line width=1.5pt, ->, color=bright-aqua] (14,0) -- (16,0) node [above, color=bright-aqua, pos=0.5, scale=1.5] {move right};
-   >       \node [left, color=bright-aqua, scale=1.5] at (10,-0.3) {$0$};
    >
-   >       %---right diagram---
-   >       %lines
-   >       \draw[line width=1.5pt, neon-green, shift={(20,0)}] plot [domain=-3:0.65] (\x, {1/(1-\x)}) node [left, scale=1.5, color=neon-green] {$y=\frac 1 {1-x}$};
-   >       \draw[line width=1.5pt, neon-green, shift={(20,0)}] plot [domain=1.35:4] (\x, {1/(1-\x)}) node [below right, scale=1.5, neon-green] {$y=\frac 1 {1-x}$};
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (34.2,3) {shift up 1 unit};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (32.2,2.5) -- (36.2,2.5);
    >
-   >       %texts
-   >       \draw[->, color=neon-pink, thick] (17,0) -- (24,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw[->, color=neon-pink, thick] (20,-3) -- (20,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-   >       \draw[line width=1.5pt, dashed, color=neon-pink] (21,-3) -- (21,3) node[right, color=bright-aqua, scale=1.5] {$x=1$};
-   >       \node [left, color=bright-aqua, scale=1.5] at (20,-0.3) {$0$};
+   >     %fourth diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(37cm,0)},
+   >         xmin=-2*pi, xmax=2*pi, ymin=-0.2, ymax=2.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.1)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-6,-5,-4,-3,-2,-1,1,2,3,4,5,6}, ytick={1,2},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-2*pi:2*pi] {-sin(deg(2*\x))+1}
+   >             node [below right, cpfunc] {$1-\sin(2x)$};
+   >     \end{axis}
+   > \end{tikzpicture}
+   > ```
+
+   > [!check] correct
+
+1. 作 $f(x)=\frac{1}{1-x}$ 之圖形
+
+   > [!note] my answer
    >
-   >   \end{tikzpicture}
-   > \end {document}
+   > ```tikz
+   > \begin{tikzpicture}
+   >     %left diagram
+   >     \begin{axis}[
+   >         name=left,
+   >         at={(0,0)},
+   >         xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-3.2:-0.3] {1/(\x)}
+   >             node [below left, cpfunc] {$y=\frac{1}{x}$};
+   >         \addplot [cpgraph, domain=0.3:3.2] {1/(\x)}
+   >             node [above left, cpfunc] {$y=\frac{1}{x}$};
+   >     \end{axis}
+   >
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (9.2,3) {reflection across the x-axis};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (6.2,2.5) -- (12.2,2.5);
+   >
+   >     %middle diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(13cm,0)},
+   >         xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-3.2:-0.3] {1/(-\x)}
+   >             node [below left, cpfunc] {$y=\frac{1}{-x}$};
+   >         \addplot [cpgraph, domain=0.3:3.2] {1/(-\x)}
+   >             node [below right, cpfunc] {$y=\frac{1}{-x}$};
+   >     \end{axis}
+   >
+   >     %arrow
+   >     \node [cptext, scale=1.5] at (21.2,3) {shift right 1 unit};
+   >     \draw [->, line width=1.5pt, color=bright-aqua] (19.2,2.5) -- (23.2,2.5);
+   >
+   >     %right diagram
+   >     \begin{axis}[
+   >         name=right,
+   >         at={(24cm,0)},
+   >         xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=3.2,
+   >         axis lines=middle, axis line style={cpaxes},
+   >         x label style={at={(axis description cs:1,0.5)}, anchor=north west, cptext},
+   >         y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >         xlabel={$x$}, ylabel={$y$},
+   >         xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2,3},
+   >         tick label style={cptext},
+   >         extra x ticks={0},
+   >         extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >         extra x tick labels={$0$},
+   >         tick style={draw=none},
+   >         clip=false,
+   >         width=7cm, height=6cm
+   >     ]
+   >         \addplot [cpgraph, domain=-3.2:0.7] {1/(1-\x)}
+   >             node [below left, cpfunc] {$y=\frac{1}{1-x}$};
+   >         \addplot [cpgraph, domain=1.3:3.2] {1/(1-\x)}
+   >             node [below right, cpfunc] {$y=\frac{1}{1-x}$};
+   >         \addplot [cpaux] coordinates {(1,-3.2) (1,3.2)}
+   >             node [above, color=neon-fuchsia] {$x=1$};
+   >     \end{axis}
+   > \end{tikzpicture}
+   > ```
+
+   > [!check] correct
+
+1. $f(x)=\lvert x^2-1\rvert$ 之圖形
+
+   > [!note] my answer
+   >
+   > $$
+   >     \lvert x^2-1\rvert=
+   >     \begin{cases}
+   >         x^2-1,\quad x\le-1\\
+   >         1-x^2,\quad-1<x<1\\
+   >          x^2-1,\quad x\ge1
+   >     \end{cases}
+   > $$
+   >
+   > ```tikz
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        name=left,
+   >        at={(0,0)},
+   >        xmin=-3.2, xmax=3.2, ymin=-1.2, ymax=5.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.21)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick={-3,-2,-1,1,2,3}, ytick={-1,1,2,3,4,5},
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=10cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2.5:-1] {(\x)^2-1};
+   >        \addplot [cpgraph, domain=-1:1] {1-(\x)^2};
+   >        \addplot [cpgraph, domain=1:2.5] {(\x)^2-1};
+   > \end{axis}
+   > \end{tikzpicture}
    > ```
 
    > [!success] correct
@@ -3900,17 +4466,17 @@ flowchart TB
 ### 圖形
 
 - $\sin(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^sin-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^sin-tikz-graph]]
 - $\cos(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^cos-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^cos-tikz-graph]]
 - $\tan(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^tan-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^tan-tikz-graph]]
 - $\cot(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^cot-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^cot-tikz-graph]]
 - $\sec(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^sec-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^sec-tikz-graph]]
 - $\csc(x)$
-                                                                                                                                                                                                                                                                                                                                  	![[微積分甲/0_函數#^scs-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^scs-tikz-graph]]
 
 ### 週期
 
