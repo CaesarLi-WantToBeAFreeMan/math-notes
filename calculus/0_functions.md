@@ -2164,7 +2164,7 @@ $$
 
    > [!check] correct
 
-2. 作 $y=1-\sin(2x)$ 之圖形
+1. 作 $y=1-\sin(2x)$ 之圖形
 
    > [!note] my answer
    >
@@ -2275,7 +2275,7 @@ $$
 
    > [!check] correct
 
-3. 作 $f(x)=\frac{1}{1-x}$ 之圖形
+1. 作 $f(x)=\frac{1}{1-x}$ 之圖形
 
    > [!note] my answer
    >
@@ -2367,7 +2367,7 @@ $$
 
    > [!check] correct
 
-4. $f(x)=\lvert x^2-1\rvert$ 之圖形
+1. $f(x)=\lvert x^2-1\rvert$ 之圖形
 
    > [!note] my answer
    >
@@ -2408,9 +2408,10 @@ $$
 
    > [!success] correct
 
-5. 對不同的 $c$ 作 $f(x)=x^3+cx$ 之圖形
+1. 對不同的 $c$ 作 $f(x)=x^3+cx$ 之圖形
 
    > [!note] my answer
+   >
    > ```tikz
    > \begin{tikzpicture}
    >    %left diagram
@@ -2486,9 +2487,10 @@ $$
 
    > [!success] correct
 
-6. 作 $f(x)=\sin(50x)$ 之圖形
+1. 作 $f(x)=\sin(50x)$ 之圖形
 
    > [!note] my answer
+   >
    > ```tikz
    > \begin{tikzpicture}
    >    \begin{axis}[
@@ -2496,7 +2498,7 @@ $$
    >        at={(0,0)},
    >        xmin=-0.06*pi, xmax=0.06*pi, ymin=-1.2, ymax=1.2,
    >        axis lines=middle, axis line style={cpaxes},
-   >        x label style={at={(axis description cs:1,0.21)}, anchor=north west, cptext},
+   >        x label style={at={(axis description cs:1,0.53)}, anchor=north west, cptext},
    >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
    >        xlabel={$x$}, ylabel={$y$},
    >        xtick={-0.06*pi,-0.04*pi,-0.02*pi,0.02*pi,0.04*pi,0.06*pi}, ytick={-1,1},
@@ -2516,53 +2518,113 @@ $$
 
    > [!success] correct
 
-7. 作 $f(x)=\sin(x)+\frac{1}{100}\cos(100x)$ 之圖形
-8. 以函數圖形求 $\cos(x)=x$ 的解
+1. 作 $f(x)=\sin(x)+\frac{1}{100}\cos(100x)$ 之圖形
+
+   > [!note] my answer
+   > IDK 😭
+
+   > [!danger] $\frac{1}{100}\cos(100x)$ 在 $\sin(x)$ 中震盪
+   >
+   > $$
+   >    \underbrace{\sin(x)}_{\text{主函數}}\quad+\quad\underbrace{\frac{1}{100}\cos(100x)}_{\text{高頻小幅震盪}}
+   > $$
+   >
+   > ```tikz
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        xmin=-2.1*pi, xmax=2.1*pi, ymin=-1.2, ymax=1.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.53)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick={-2*pi,-1*pi,1*pi,2*pi}, ytick={-1,1},
+   >        xticklabels={$-2\pi$,$-\pi$,$\pi$,$2\pi$},
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=6cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2.1*pi:2.1*pi]
+   >            {sin(deg(\x)) + 0.01*cos(deg(100*\x))};
+   >    \end{axis}
+   > \end{tikzpicture}
+   > ```
+
+1. 以函數圖形求 $\cos(x)=x$ 的解
+
+   > [!note] my answer
+   >
+   > ```tikz
+   > \begin{tikzpicture}
+   >    \begin{axis}[
+   >        name=left,
+   >        at={(0,0)},
+   >        xmin=-2.1*pi, xmax=2.1*pi, ymin=-5.2, ymax=5.2,
+   >        axis lines=middle, axis line style={cpaxes},
+   >        x label style={at={(axis description cs:1,0.53)}, anchor=north west, cptext},
+   >        y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+   >        xlabel={$x$}, ylabel={$y$},
+   >        xtick={-2*pi,-1*pi,1*pi,2*pi}, ytick={-5,-4,-3,-2,-1,1,2,3,4,5},
+   >        xticklabels={$-2\pi$,$-\pi$,$\pi$,$2\pi$},
+   >        tick label style={cptext},
+   >        extra x ticks={0},
+   >        extra x tick style={ticklabel style={anchor=north east, cptext}},
+   >        extra x tick labels={$0$},
+   >        tick style={draw=none},
+   >        clip=false,
+   >        width=8cm, height=8cm
+   >    ]
+   >        \addplot [cpgraph, domain=-2.1*pi:2.1*pi] {cos(deg(\x))}
+   >             node [below right, cpfunc] {$f(x)=\cos(x)$};
+   >        \addplot [cpgraph, color=neon-fuchsia, domain=-5.2:5.2] {\x}
+   >             node [above right, cpfunc, color=neon-fuchsia] {$f(x)=x$};
+   >    \end{axis}
+   > \end{tikzpicture}
+   > ```
+
+   > [!success] correct
+
+---
+
+# 常見之函數類型
 
 ## 分段定義的函數
 
 1. **絕對值函數**
 
    $$
-       \lvert x \rvert =
-       \begin {cases}
-           x, \quad x \ge 0\\
-           -x, \quad x < 0
-       \end {cases}
+       \lvert x\rvert=
+       \begin{cases}
+           x,\quad x\ge0\\
+           -x,\quad x<0
+       \end{cases}
    $$
 
    ```tikz
-   \usepackage{xcolor}
-
-   \begin {document}
-       \begin{tikzpicture}[domain=0:4]
-           %colors
-           \definecolor {neon-pink}{HTML}{ff6ec7};
-           \definecolor {neon-fuchsia}{HTML}{fe4164};
-           \definecolor {neon-red}{HTML}{ff3131};
-           \definecolor {neon-orange}{HTML}{ff5f1f};
-           \definecolor {neon-yellow}{HTML}{ffff33};
-           \definecolor {electric-lime}{HTML}{ccff00};
-           \definecolor {neon-green}{HTML}{39ff14};
-           \definecolor {neon-turquoise}{HTML}{0ff0fc};
-           \definecolor {neon-blue}{HTML}{1f51ff};
-           \definecolor {electric-blue}{HTML}{7df9ff};
-           \definecolor {neon-purple}{HTML}{b026ff};
-           \definecolor {neon-violet}{HTML}{9d00ff};
-           \definecolor {neon-magenta}{HTML}{ff00ff};
-           \definecolor {laser-lemon}{HTML}{ffff66};
-           \definecolor {bright-aqua}{HTML}{00ffef};
-           \definecolor {hot-pink}{HTML}{ff6984};
-
-           \draw[line width=1.5pt, neon-green] plot [domain=-3:0] (\x, {-\x});
-           \draw[line width=1.5pt, neon-green] plot [domain=0:3] (\x, {\x}) node [above right, scale=1.5, neon-green] {$y=|x|$};
-
-           %texts
-           \draw[->, color=neon-pink, thick] (-3,0) -- (3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-           \draw[->, color=neon-pink, thick] (0,-1) -- (0,3) node[above, color=bright-aqua, scale=1.5] {$y$};
-           \node [left, color=bright-aqua, scale=1.5] at (0,-0.3) {$0$};
-       \end{tikzpicture}
-   \end {document}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-1.2, ymax=3.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.32)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-1,1,2,3},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \addplot [cpgraph, domain=-3.2:0] {-\x};
+            \addplot [cpgraph, domain=0:3.2] {\x}
+                node [above right, cpfunc] {$y=\lvert x\rvert$};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
 2. **最大整數函數**, **高斯函數**, **地板函數** (`greatest integer function`, `Gauss function`, `floor function`)
@@ -2570,47 +2632,38 @@ $$
    - 小於或等於 $x$ 的最大整數
 
    $$
-       \lfloor x \rfloor = n, \quad \text {if } n \le x <n+1, \quad n \in \mathbb Z
+       \lfloor x\rfloor=n,\quad\text{if }n\le x<n+1,\quad n\in\mathbb{Z}
    $$
 
    ```tikz
-   \usepackage{xcolor}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-3.2, ymax=2.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.62)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-3,-2,-1,1,2},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \foreach \x in {-3,-2,-1,0,1,2} {
+                \addplot [cpgraph]
+                    coordinates {(\x,\x) (\x+1,\x)};
+                \addplot [only marks, cppoint, mark options={fill=bright-aqua, draw=bright-aqua}]
+                    coordinates {(\x,\x)};
+                \addplot [only marks, cppoint, mark options={fill=black, draw=bright-aqua, line width=1.2pt}]
+                    coordinates {(\x+1,\x)};
+            }
 
-   \begin{document}
-       \begin{tikzpicture}
-           % colors
-           \definecolor{neon-pink}{HTML}{ff6ec7}
-           \definecolor{neon-fuchsia}{HTML}{fe4164}
-           \definecolor{neon-red}{HTML}{ff3131}
-           \definecolor{neon-orange}{HTML}{ff5f1f}
-           \definecolor{neon-yellow}{HTML}{ffff33}
-           \definecolor{electric-lime}{HTML}{ccff00}
-           \definecolor{neon-green}{HTML}{39ff14}
-           \definecolor{neon-turquoise}{HTML}{0ff0fc}
-           \definecolor{neon-blue}{HTML}{1f51ff}
-           \definecolor{electric-blue}{HTML}{7df9ff}
-           \definecolor{neon-purple}{HTML}{b026ff}
-           \definecolor{neon-violet}{HTML}{9d00ff}
-           \definecolor{neon-magenta}{HTML}{ff00ff}
-           \definecolor{laser-lemon}{HTML}{ffff66}
-           \definecolor{bright-aqua}{HTML}{00ffef}
-           \definecolor{hot-pink}{HTML}{ff6984}
-
-           %graph
-           \foreach \x in {-3,-2,-1,0,1,2} {
-               \pgfmathsetmacro{\nextx}{\x+1}
-               \draw [line width=1.5pt, neon-green] (\x,\x) -- (\nextx,\x);
-               \fill [neon-green] (\x,\x) circle (3pt);
-               \draw [line width=1.5pt, neon-green, fill=white] (\nextx,\x) circle (3pt);
-           }
-
-           %lines
-           \node[above right, color=neon-green, scale=1.5] at (2.5,2) {$y=\lfloor x \rfloor$};
-           \draw[->, color=neon-pink, thick] (-3.3,0) -- (3.3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-           \draw[->, color=neon-pink, thick] (0,-3.3) -- (0,2.3) node[above, color=bright-aqua, scale=1.5] {$y$};
-           \node[below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-       \end{tikzpicture}
-   \end{document}
+            \node [above right, cptext] at (axis cs:2.5,2) {$y=\lfloor x\rfloor$};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
 3. **天花板函數** (`ceiling function`)
@@ -2618,558 +2671,209 @@ $$
    - 大於或等於 $x$ 的最小整數
 
    $$
-       \lceil x \rceil = n, \quad \text {if } n < x \le n+1, \quad n \in \mathbb Z
+       \lceil x\rceil=n,\quad\text{if }n<x\le n+1,\quad n\in\mathbb{Z}
    $$
 
    ```tikz
-   \usepackage{xcolor}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-2.2, ymax=3.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.42)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-2,-1,1,2,3},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \foreach \x in {-3,-2,-1,0,1,2} {
+                \addplot [cpgraph, thick]
+                    coordinates {(\x,\x+1) (\x+1,\x+1)};
+                \addplot [only marks, cppoint, mark options={fill=black, draw=bright-aqua, line width=1.2pt}]
+                    coordinates {(\x,\x+1)};
+                \addplot [only marks, cppoint, mark options={fill=bright-aqua, draw=bright-aqua}]
+                    coordinates {(\x+1,\x+1)};
+            }
 
-   \begin{document}
-       \begin{tikzpicture}
-
-           % colors
-           \definecolor{neon-pink}{HTML}{ff6ec7}
-           \definecolor{neon-fuchsia}{HTML}{fe4164}
-           \definecolor{neon-red}{HTML}{ff3131}
-           \definecolor{neon-orange}{HTML}{ff5f1f}
-           \definecolor{neon-yellow}{HTML}{ffff33}
-           \definecolor{electric-lime}{HTML}{ccff00}
-           \definecolor{neon-green}{HTML}{39ff14}
-           \definecolor{neon-turquoise}{HTML}{0ff0fc}
-           \definecolor{neon-blue}{HTML}{1f51ff}
-           \definecolor{electric-blue}{HTML}{7df9ff}
-           \definecolor{neon-purple}{HTML}{b026ff}
-           \definecolor{neon-violet}{HTML}{9d00ff}
-           \definecolor{neon-magenta}{HTML}{ff00ff}
-           \definecolor{laser-lemon}{HTML}{ffff66}
-           \definecolor{bright-aqua}{HTML}{00ffef}
-           \definecolor{hot-pink}{HTML}{ff6984}
-
-           \foreach \x in {-3,-2,-1,0,1,2} {
-               \pgfmathsetmacro {\nextx} {\x+1}
-
-               \draw[line width=1.5pt, neon-green] (\x+0.001,\nextx) -- (\nextx,\nextx);
-               \draw[line width=1.5pt, neon-green, fill=white ] (\x,\nextx) circle (3pt);
-               \fill[neon-green] (\nextx,\nextx) circle (3pt);
-           }
-
-           \node[above right, color=neon-green, scale=1.5] at (2.5,3) {$y=\lceil x \rceil$};
-           \draw[->, color=neon-pink, thick] (-3,0) -- (3,0) node[right, color=bright-aqua, scale=1.5] {$x$};
-           \draw[->, color=neon-pink, thick] (0,-2.3) -- (0,3.3) node[above, color=bright-aqua, scale=1.5] {$y$};
-
-           \node[below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-
-       \end{tikzpicture}
-   \end{document}
+            \node [above right, cptext] at (axis cs:2.5,3) {$y=\lceil x\rceil$};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
 4. `Heaviside` 函數
 
    $$
-   H(x)=
-   \begin {cases}
-      1, \quad x \ge 0\\
-      0, \quad x <0
-   \end {cases}
+       H(x)=
+       \begin{cases}
+           1,\quad x\ge0\\
+           0,\quad<0
+       \end{cases}
    $$
 
    ```tikz
-   \usepackage {xcolor}
-
-   \begin {document}
-       \begin {tikzpicture}
-           %colors
-           \definecolor {neon-pink} {HTML} {FF6EC7}
-           \definecolor {neon-fuchsia} {HTML} {FE4164}
-           \definecolor {neon-red} {HTML} {FF3131}
-           \definecolor {neon-orange} {HTML} {FF5F1F}
-           \definecolor {neon-yellow} {HTML} {FFFF33}
-           \definecolor {electric-lime} {HTML} {CCFF00}
-           \definecolor {neon-green} {HTML} {39FF14}
-           \definecolor {neon-turquoise} {HTML} {0FF0FC}
-           \definecolor {neon-blue} {HTML} {1F51FF}
-           \definecolor {electric-blue} {HTML} {7DF9FF}
-           \definecolor {neon-purple} {HTML} {B026FF}
-           \definecolor {neon-violet} {HTML} {9D00FF}
-           \definecolor {neon-magenta} {HTML} {FF00FF}
-           \definecolor {laser-lemon} {HTML} {FFFF66}
-           \definecolor {bright-aqua} {HTML} {00FFEF}
-           \definecolor {hot-pink} {HTML} {FF6984}
-
-           %lines
-           \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-           \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-           \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-
-
-           %graphs
-           \draw [line width=1.5pt, color=neon-green] plot [domain=-3:0] (\x,0);
-           \draw [line width=1.5pt, color=neon-green] plot [domain=0:3] (\x,1) node [above right, scale=1.5, color=neon-green] {$f(x)=H(x)$};
-           \fill [neon-green] (0,1) circle (3pt);
-           \draw [neon-green, line width=1.5pt, fill=white] (0,0) circle (3pt);
-       \end {tikzpicture}
-   \end {document}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-1.2, ymax=1.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-1,1},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \addplot [cpgraph, thick, domain=-3.2:0] {0};
+            \addplot [cpgraph, thick, domain=0:3.2] {1}
+                node [right, cpfunc] {$f(x)=H(x)$};
+            \addplot [only marks, cppoint, mark options={fill=black, draw=bright-aqua, line width=1.2pt}]
+                coordinates {(0,0)};
+            \addplot [only marks, cppoint, mark options={fill=bright-aqua, draw=bright-aqua}]
+                coordinates {(0,1)};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
 5. 符號函數 (`the signum function`)
 
    $$
-   sgn(x)=
-   \begin {cases}
-   1, \quad x>0\\
-   -1, \quad x<0
-   \end {cases}
+       \operatorname{sgn}(x)=
+       \begin{cases}
+           1,\quad x>0\\
+           -1,\quad x<0
+       \end{cases}
    $$
 
    ```tikz
-   \usepackage {xcolor}
-
-   \begin {document}
-       \begin {tikzpicture}
-           %colors
-           \definecolor {neon-pink} {HTML} {FF6EC7}
-           \definecolor {neon-fuchsia} {HTML} {FE4164}
-           \definecolor {neon-red} {HTML} {FF3131}
-           \definecolor {neon-orange} {HTML} {FF5F1F}
-           \definecolor {neon-yellow} {HTML} {FFFF33}
-           \definecolor {electric-lime} {HTML} {CCFF00}
-           \definecolor {neon-green} {HTML} {39FF14}
-           \definecolor {neon-turquoise} {HTML} {0FF0FC}
-           \definecolor {neon-blue} {HTML} {1F51FF}
-           \definecolor {electric-blue} {HTML} {7DF9FF}
-           \definecolor {neon-purple} {HTML} {B026FF}
-           \definecolor {neon-violet} {HTML} {9D00FF}
-           \definecolor {neon-magenta} {HTML} {FF00FF}
-           \definecolor {laser-lemon} {HTML} {FFFF66}
-           \definecolor {bright-aqua} {HTML} {00FFEF}
-           \definecolor {hot-pink} {HTML} {FF6984}
-
-           %lines
-           \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-           \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-           \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-
-           %graoh
-           \draw [line width=1.5pt, color=neon-green] plot [domain=-3:0] (\x,-1);
-           \draw [line width=1.5pt, color=neon-green] plot [domain=0:3] (\x,1) node [above right, scale=1.5, color=neon-green] {$f(x)=sgn(x)$};
-           \draw [neon-green, line width=1.5pt, fill=white] (0,1) circle (3pt);
-           \draw [neon-green, line width=1.5pt, fill=white] (0,-1) circle (3pt);
-
-       \end {tikzpicture}
-   \end {document}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-1.2, ymax=1.5,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.52)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-1,1},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \addplot [cpgraph, domain=-3.2:0] {-1};
+            \addplot [cpgraph, domain=0:3.2] {1}
+                node [right, cpfunc] {$f(x)=\operatorname{sgn}(x)$};
+            \addplot [only marks, cppoint, mark options={fill=black, draw=bright-aqua, line width=1.2pt}]
+                coordinates {(0,1) (0,-1)};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
-## assignment 7
+### 練習
 
-1. $f(x) = \begin {cases} (x+1)^2, \quad x<-1\\ -x, \quad -1 \le x <1\\ \sqrt {x-1}, x \ge 1 \end {cases}$
+1. 如何以 $\lfloor x\rfloor$ 表出 $\lceil x\rceil$
 
    > [!note] my answer
    >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,4) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >       \draw [dashed, line width=1.2pt, color=neon-red] (-1,-3) -- (-1,4) node [above left, color=neon-red, scale=1.5] {$x=-1$};
-   >       \draw [dashed, line width=1.2pt, color=neon-red] (1,-3) -- (1,4) node [above left, color=neon-red, scale=1.5] {$x=1$};
-   >
-   >       %graph
-   >       \draw [line width=1.5pt, color=neon-green, shift={(-1,0)}] plot [domain=-2:0, samples=100, smooth] (\x,{(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green] plot [domain=-1:1] (\x,{-\x});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(1,0)}] plot [domain=0:2, samples=100, smooth] (\x,{sqrt(\x)});
-   >       \draw [neon-green, line width=1.5pt, fill=white] (-1,0) circle (3pt);
-   >       \fill [neon-green] (-1,1) circle (3pt);
-   >       \draw [neon-green, line width=1.5pt, fill=white] (1,-1) circle (3pt);
-   >       \fill [neon-green] (1,0) circle (3pt);
-   >
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
+   > $$
+   >   \lceil x\rceil=
+   >   \begin{cases}
+   >      \lfloor x\rfloor,x\in\mathbb{Z}\\
+   >      \lfloor x\rfloor+1,x\notin\mathbb{Z}\\
+   >   \end{cases}
+   > $$
 
    > [!success] correct
+   > but we can use $\lceil x\rceil=-\lfloor-x\rfloor$ to simplify it
 
-2. 將圖中的的函數以式子寫出
+2. 作函數 $f(x)=\max\{x^2,2+x,2-x\}$ 之圖形
+
+   > [!note] my answer
 
    ```tikz
-   \usepackage {xcolor}
-
-   \begin {document}
-       \begin {tikzpicture}
-           %colors
-           \definecolor {neon-pink} {HTML} {FF6EC7}
-           \definecolor {neon-fuchsia} {HTML} {FE4164}
-           \definecolor {neon-red} {HTML} {FF3131}
-           \definecolor {neon-orange} {HTML} {FF5F1F}
-           \definecolor {neon-yellow} {HTML} {FFFF33}
-           \definecolor {electric-lime} {HTML} {CCFF00}
-           \definecolor {neon-green} {HTML} {39FF14}
-           \definecolor {neon-turquoise} {HTML} {0FF0FC}
-           \definecolor {neon-blue} {HTML} {1F51FF}
-           \definecolor {electric-blue} {HTML} {7DF9FF}
-           \definecolor {neon-purple} {HTML} {B026FF}
-           \definecolor {neon-violet} {HTML} {9D00FF}
-           \definecolor {neon-magenta} {HTML} {FF00FF}
-           \definecolor {laser-lemon} {HTML} {FFFF66}
-           \definecolor {bright-aqua} {HTML} {00FFEF}
-           \definecolor {hot-pink} {HTML} {FF6984}
-
-           %axes
-           \draw [->, line width=1.2pt, color=neon-pink] (-1,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-           \draw [->, line width=1.2pt, color=neon-pink] (0,-1) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-           \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-
-           %grid
-           \draw [step=1cm, gray, very thin] (-1,-1) grid (3,3);
-
-           %graph
-           \draw [line width=1.5pt, color=neon-green] (0,0) -- (1,1);
-           \draw [line width=1.5pt, color=neon-green] (1,1) -- (2,0);
-           \draw [line width=1.5pt, color=neon-green] (2,0) -- (3.2,0);
-           \node [above right, color=bright-aqua] at (1,1) {$(1,1)$};
-
-       \end {tikzpicture}
-   \end {document}
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-2.2, ymax=6.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.3)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-2,-1,1,2,3,4,5,6},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \addplot [cpgraph, domain=-3.2:3.2] {\x+2}
+                node [above right, cpfunc] {$f(x)=x+2$};
+            \addplot [cpgraph, color=neon-fuchsia, domain=-3.2:3.2] {-\x+2}
+                node [below right, cpfunc, color=neon-fuchsia] {$f(x)=-x+2$};
+            \addplot [cpgraph, color=neon-orange, domain=-2.5:2.5] {(\x)^2}
+                node [above left, cpfunc, color=neon-orange] {$f(x)=x^2$};
+        \end{axis}
+   \end{tikzpicture}
    ```
 
-   > [!note] my answer
-   > $f(x)= \begin {cases} x, \quad x \in [0, 1]\\ -x+2, \quad x \in (1, 2]\\ 0, \quad x>2 \end {cases}$
+   $$
+       \begin{aligned}
+           x^2&\ge x+2(x>0)\\
+           x^2-x-2&\ge0\\
+           (x+1)(x-2)&\ge0\\
+           x&\in[2,\infty)\\
+           x^2&\ge-x+2(x<0)\\
+           x^2+x-2&\ge0\\
+           (x+2)(x-1)&\ge0\\
+           x&\in(-\infty,-2]\\
+           \max\{x^2,2+x,2-x\}&=
+           \begin{cases}
+               x^2,&x\le-2\\
+               -x+2,&-2<x<0\\
+               x+2,&0<x<2\\
+               x^2,&x\ge2
+           \end{cases}
+       \end{aligned}
+   $$
 
-   > [!success] correct
+   ```tikz
+   \begin{tikzpicture}
+        \begin{axis}[
+            xmin=-3.2, xmax=3.2, ymin=-1.2, ymax=9.2,
+            axis lines=middle, axis line style={cpaxes},
+            x label style={at={(axis description cs:1,0.15)}, anchor=north west, cptext},
+            y label style={at={(axis description cs:0.5,1)}, anchor=south, cptext},
+            xlabel={$x$}, ylabel={$y$},
+            xtick={-3,-2,-1,1,2,3}, ytick={-1,1,2,3,4,5,6,7,8,9},
+            tick label style={cptext},
+            extra x ticks={0},
+            extra x tick style={ticklabel style={anchor=north east, cptext}},
+            extra x tick labels={$0$},
+            tick style={draw=none},
+            clip=false,
+            axis equal image
+        ]
+            \addplot [cpgraph, domain=-3.2:-2] {(\x)^2};
+            \addplot [cpgraph, domain=-2:0] {-\x+2};
+            \addplot [cpgraph, domain=0:2] {\x+2};
+            \addplot [cpgraph, domain=2:3.2] {(\x)^2};
+        \end{axis}
+   \end{tikzpicture}
+   ```
 
-3. 作圖 $f(x)=\lvert x^2-1 \rvert$
-
-   > [!note] my answer
-   >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-1) -- (0,4) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >
-   >       %auxiliary lines
-   >       \draw [dashed, line width=1pt, color=neon-red] (1,-1) -- (1,4) node [above left, color=neon-red] {$x=1$};
-   >       \draw [dashed, line width=1pt, color=neon-red] (-1,-1) -- (-1,4) node [above left, color=neon-red] {$x=-1$};
-   >
-   >       %graph
-   >       \draw [line width=1.5pt, color=neon-green, shift={(1,0)}] plot [domain=-1:0, samples=100, smooth] (\x,{(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(1,0)}] plot [domain=0:2, samples=100, smooth] (\x,{(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(-1,0)}] plot [domain=0:1, samples=100, smooth] (\x,{(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(-1,0)}] plot [domain=-2:0, samples=100, smooth] (\x,{(\x)^2});
-   >
-   >       \fill [bright-aqua] (0,1) circle (3pt);
-   >
-   >       \node [above right, color=bright-aqua] at (0,1) {$(0,1)$};
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
-
-   > [!danger] $\lvert x \rvert \ge 1$ is correct, but rest is wrong
-   > $f(x)= \begin {cases} x^2-1, \quad \lvert x \rvert \ge 1\\ 1-x^2, \quad \lvert x \rvert < 1 \end {cases}$
-   >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-1) -- (0,4) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >
-   >       %auxiliary lines
-   >       \draw [dashed, line width=1pt, color=neon-red] (1,-1) -- (1,4) node [above left, color=neon-red] {$x=1$};
-   >       \draw [dashed, line width=1pt, color=neon-red] (-1,-1) -- (-1,4) node [above left, color=neon-red] {$x=-1$};
-   >
-   >       %graph
-   >       \draw [line width=1.5pt, color=neon-red, shift={(0,1)}] plot [domain=0:1, samples=100, smooth] (\x,{-(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(1,0)}] plot [domain=0:2, samples=100, smooth] (\x,{(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-red, shift={(0,1)}] plot [domain=-1:0, samples=100, smooth] (\x,{-(\x)^2});
-   >       \draw [line width=1.5pt, color=neon-green, shift={(-1,0)}] plot [domain=-2:0, samples=100, smooth] (\x,{(\x)^2});
-   >
-   >       \fill [bright-aqua] (0,1) circle (3pt);
-   >
-   >       \node [above right, color=bright-aqua] at (0,1) {$(0,1)$};
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
-
-4. 作圖 $\lvert x-y \rvert + \lvert x \rvert - \lvert y \rvert \le 2$
-
-   > [!note] my answer
-   > $\begin {aligned} \lvert x-y \rvert + \lvert x \rvert - \lvert y \rvert &\le 2\\ (x-y)^2+x^2-y^2 &\le 4\\ x^2-2xy+y^2+x^2-y^2 &\le 4\\ 2x^2-2xy &\le 4\\ x^2-xy &\le 4\\ xy &\ge x^2-4\\ y &\ge x - \frac {4} {x} \end {aligned}$
-   > let $f(x) = x - \frac {4} {x}$
-   > we can have a table
-   >
-   > | x                                         | -3               | -2  | -1  | 1    | 2   | 3               |
-   > | ----------------------------------------- | ---------------- | --- | --- | ---- | --- | --------------- |
-   > | y                                         | $-\frac {5} {3}$ | $0$ | $3$ | $-3$ | $0$ | $\frac {5} {3}$ |
-   > | thus, we can draw $f(x)=x- \frac {4} {x}$ |
-   >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >
-   >       %graph
-   >       \draw [line width=1.5pt, color=neon-green, samples=100, smooth] plot coordinates {(-3,-1.67) (-2,0) (-1,3)};
-   >       \draw [line width=1.5pt, color=neon-green, samples=100, smooth] plot coordinates {(1,-3) (2,0) (3,1.67)};
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
-
-   > [!danger] wrong
-   > for $\lvert x-y \rvert$, $\lvert x \rvert$ and $\lvert y \rvert$, we can divide it into **6 cases**
-   >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >       \draw [line width=1.5pt, color=neon-pink] plot [domain=-3:3] (\x,{\x}) node [above right, color=neon-pink, scale=1.5] {$y=x$};
-   >
-   >       %nodes
-   >       \node [scale=2, color=bright-aqua] at (2,1) {$1$};
-   >       \node [scale=2, color=bright-aqua] at (1,2) {$2$};
-   >       \node [scale=2, color=bright-aqua] at (-1,1) {$3$};
-   >       \node [scale=2, color=bright-aqua] at (-2,-1) {$4$};
-   >       \node [scale=2, color=bright-aqua] at (-1,-2) {$5$};
-   >       \node [scale=2, color=bright-aqua] at (1,-1) {$6$};
-   >
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
-   >
-   > $$
-   > \begin {aligned}
-   >   \text {1)} &\quad x-y \ge 0,x \ge 0,y \ge 0\\
-   >   &x-y+x-y \le 2\\
-   >   &2x-2y \le 2\\
-   >   &x-y \le 1\\
-   >   &y \ge x-1\\
-   >   \\
-   >   \text {2)} &\quad x-y<0,x \ge 0,y \ge 0\\
-   >   &-(x-y)+x-y \le 2\\
-   >   &0 \le 2\\
-   >   &\{(x,y) \in \mathbb R^2: x \ge 0,y \ge 0,x<y\}\\
-   >   \\
-   >   \text {3)} &\quad x-y<0,x<0,y \ge 0\\
-   >   &-(x-y)-x-y \le 2\\
-   >   &-x+y-x-y \le 2\\
-   >   &-2x \le 2\\
-   >   &x \ge -1\\
-   >   \\
-   >   \text {4)} &\quad x-y<0,x<0,y<0\\
-   >   &-x+y-x+y \le 2\\
-   >   &-2x+2y \le 2\\
-   >   &y-x \le 1\\
-   >   &y \le x+1\\
-   >   \\
-   >   \text {5)} &\quad x-y \ge 0,x<0,y<0\\
-   >   &x-y-x+y \le 2\\
-   >   &0 \le 2\\
-   >   &\{(x,y) \in \mathbb R^2:x<0,y<0,x \ge y\}\\
-   >   \\
-   >   \text {6)} &\quad x-y \ge 0,x \ge 0,y<0\\
-   >   &x-y+x+y \le 2\\
-   >   &2x \le 2\\
-   >   &x \le 1
-   > \end {aligned}
-   > $$
-   >
-   > ```tikz
-   > \usepackage {xcolor}
-   >
-   > \begin {document}
-   >   \begin {tikzpicture}
-   >       %colors
-   >       \definecolor {neon-pink} {HTML} {FF6EC7}
-   >       \definecolor {neon-fuchsia} {HTML} {FE4164}
-   >       \definecolor {neon-red} {HTML} {FF3131}
-   >       \definecolor {neon-orange} {HTML} {FF5F1F}
-   >       \definecolor {neon-yellow} {HTML} {FFFF33}
-   >       \definecolor {electric-lime} {HTML} {CCFF00}
-   >       \definecolor {neon-green} {HTML} {39FF14}
-   >       \definecolor {neon-turquoise} {HTML} {0FF0FC}
-   >       \definecolor {neon-blue} {HTML} {1F51FF}
-   >       \definecolor {electric-blue} {HTML} {7DF9FF}
-   >       \definecolor {neon-purple} {HTML} {B026FF}
-   >       \definecolor {neon-violet} {HTML} {9D00FF}
-   >       \definecolor {neon-magenta} {HTML} {FF00FF}
-   >       \definecolor {laser-lemon} {HTML} {FFFF66}
-   >       \definecolor {bright-aqua} {HTML} {00FFEF}
-   >       \definecolor {hot-pink} {HTML} {FF6984}
-   >
-   >       %axes
-   >       \draw [->, line width=1.2pt, color=neon-pink] (-3,0) -- (3,0) node [right, color=bright-aqua, scale=1.5] {$x$};
-   >       \draw [->, line width=1.2pt, color=neon-pink] (0,-3) -- (0,3) node [above, color=bright-aqua, scale=1.5] {$y$};
-   >       \node [below left, color=bright-aqua, scale=1.5] at (0,0) {$0$};
-   >       \draw [line width=1.5pt, color=neon-pink] plot [domain=-3:3] (\x,{\x}) node [above right, color=neon-pink, scale=1.5] {$y=x$};
-   >
-   >       %auxiliary lines
-   >       \draw [dashed, line width=1pt, color=neon-green] plot [domain=-2:3] (\x,{\x-1}) node [below left, color=neon-green] {$y=x-1$};
-   >       \draw [dashed, line width=1pt, color=neon-green] plot [domain=-3:2] (\x,{\x+1}) node [below right, color=neon-green] {$y=x+1$};
-   >       \draw [dashed, line width=1pt, color=neon-green] (1,3) -- (1,-3) node [below right, color=neon-green] {$x=1$};
-   >       \draw [dashed, line width=1pt, color=neon-green] (-1,3) -- (-1,-3) node [below right, color=neon-green] {$x=-1$};
-   >
-   >       %area
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (3,3) -- (3,2) -- (1,0) -- cycle;
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (3,3) -- (0,3) -- cycle;
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (0,3) -- (-1,3) -- (-1,0) -- cycle;
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (-1,0) -- (-3,-2) -- (-3,-3) -- cycle;
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (-3,-3) -- (0,-3) -- cycle;
-   >       \fill [bright-aqua, opacity=0.3] (0,0) -- (0,-3) -- (1,-3) -- (1,-0) -- cycle;
-   >
-   >   \end {tikzpicture}
-   > \end {document}
-   > ```
-
-5. $x^4-4x^2-x^2y^2+4y^2=0$
-
-   > [!note] my answer
-   >
-   > $$
-   > \begin {aligned}
-   >  x^4-x^2y^2+4y^2-4x^2&=0\\
-   >  x^2(x^2-y^2)+4(y^2-x^2)&=0\\
-   >  x^2(x+y)(x-y)+4(y+x)(y-x)&=0\\
-   >  x^2(x+y)(x-y)-4(x+y)(x-y)&=0\\
-   >  (x+y)(x-y)(x^2-4)&=0\\
-   >  (x+y)(x-y)(x+2)(x-2)&=0
-   >  \\
-   >   &\begin {cases}
-   >       x=-y\\
-   >       x=y\\
-   >       x=-2\\
-   >       x=2
-   >   \end {cases}
-   >   \\
-   >   \{(x,y) \in \mathbb R^2|x=-y \text { or } x=y \text { or } x=-2 \text { or } x=2\}
-   > \end {aligned}\\
-   > $$
-
-   > [!success] correct
-
-6. 如何以 $\lfloor x \rfloor$ 表出 $\lceil x \rceil$
-
-   > [!note] my answer
-   >
-   > $$
-   >   \lceil x \rceil =
-   >   \begin {cases}
-   >      \lfloor x \rfloor, x \in \mathbb Z\\
-   >      \lfloor x \rfloor + 1, x \notin \mathbb Z\\
-   >   \end {cases}
-   > $$
-
-   > [!success] correct
-   > but we can use $\lceil x \rceil = - \lfloor -x \rfloor$ to simplify it
+3. 描繪出不等式 $-1\le\max\{x,2y^2\}\le1$ 所定義的區域
+4. 以一個涉有絕對值之數學式表出函數 $f(x)=\max\{g(x),h(x)\}$
 
 ## 常見函數
 
@@ -4577,17 +4281,17 @@ flowchart TB
 ### 圖形
 
 - $\sin(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^sin-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^sin-tikz-graph]]
 - $\cos(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^cos-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^cos-tikz-graph]]
 - $\tan(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^tan-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^tan-tikz-graph]]
 - $\cot(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^cot-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^cot-tikz-graph]]
 - $\sec(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^sec-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^sec-tikz-graph]]
 - $\csc(x)$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            	![[微積分甲/0_函數#^scs-tikz-graph]]
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              	![[微積分甲/0_函數#^scs-tikz-graph]]
 
 ### 週期
 
